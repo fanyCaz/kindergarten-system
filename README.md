@@ -1,1 +1,1 @@
-# Sistema de gestión de guardería
+# Gestión de guardería
