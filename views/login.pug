@@ -1,13 +1,14 @@
 extends layout
 
 block content
-  div.grid.grid-rows-1.grid-cols-2
-    div.grid.justify-items-center.py-4.text-blue-400.bg-purple-200
+  include header
+  div.grid.grid-rows-1.grid-cols-2.m-10
+    div.grid.justify-items-center.py-10.text-blue-400.bg-purple-200
       p.text-3xl.p-8= "ADMINISTRADOR"
       p.py-2= "USUARIO"
       input.border-1.border-black.rounded-md
       p.py-2= "CONTRASEÑA"
       input.border-1.border-black.rounded-md
       button.mt-2.py-2.px-12.rounded-full.bg-green-300.text-white= "ENTRAR"
-    div.grid.justify-items-center.bg-pink-300
-      p= "LITTLE WORLD"
+    div.grid.place-content-center.bg-pink-300
+      p.text-4xl.text-blue-400= "MY LITTLE WORLD"
