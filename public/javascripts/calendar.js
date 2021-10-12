@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', function(){
   var calendarEl = document.getElementById('calendar');
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
+    locale: 'es',
+    titleFormat: {
+      month: 'short',
+      year: 'numeric'
+    },
     events: [
       {
         title: "Disponible",
