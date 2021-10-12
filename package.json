@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "start http://localhost:3000 && nodemon ./bin/www",
+    "start": "nodemon ./bin/www",
     "dev-linux": "DEBUG=kindergarten-system:* npm start",
-    "dev-windows": "$env:DEBUG='myapp:*'; npm start"
+    "dev-windows": "$env:DEBUG='myapp:*'; npm start",
+    "test": "jest",
+    "test-bh": "jasmine"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -20,6 +22,8 @@
     "tailwindcss": "^2.2.16"
   },
   "devDependencies": {
+    "jasmine": "^3.9.0",
+    "jest": "^27.2.5",
     "sequelize-cli": "^6.2.0"
   }
 }
