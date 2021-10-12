@@ -24,6 +24,7 @@
   "devDependencies": {
     "jasmine": "^3.9.0",
     "jest": "^27.2.5",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "supertest": "^6.1.6"
   }
 }
