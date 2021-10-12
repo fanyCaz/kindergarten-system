@@ -9,4 +9,8 @@ router.get('/login', function(req,res,next){
   res.render('login');
 });
 
+router.get('/schedule', function(req,res,next){
+  res.render('schedule');
+});
+
 module.exports = router;

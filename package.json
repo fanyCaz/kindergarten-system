@@ -9,6 +9,7 @@
     "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/styles.css"
   },
   "dependencies": {
+    "@fullcalendar/core": "^5.9.0",
     "autoprefixer": "^10.3.7",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
