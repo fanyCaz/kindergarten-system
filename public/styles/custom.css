@@ -1,0 +1,86 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+@font-face {
+  font-family:Gilligan;
+  src: url('../fonts/GILLIGAN.TTF');
+}
+
+div.central{
+  display: flex;
+}
+.headadmin{
+  display: flex;  
+  font-family: Gilligan;
+  font-size:200%;
+  background-color: #5FC6C3;
+  height: 100px;
+  color: white;
+}
+
+.titulo{
+  margin-top: 28px;
+  margin-left: 30px;
+}
+
+.columnaadmin{
+  /* display: flex; */
+  background-color: #F0E3E1;
+  width:200px;
+  height:860px;
+}
+
+.columnaadmin li{
+  margin:0;
+  padding: 0;
+  color: black; 
+  text-align: center; 
+  line-height : 200%;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 125%;
+}
+
+div.servicios{
+  width: 70%;
+  margin-left: 20px;
+}
+
+div.servicios .encabezado{
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items: center;
+}
+
+button.agregab{
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  color: black;
+  background-color: #73d66c;
+  border-radius: 6px;
+  border: 2px solid #73d66c;
+}
+
+button.agregab a{
+  color:white;
+}
+
+.cajaazul{
+  background-color: #86e2df;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-radius:10px;
+  margin:20px 0;
+}
+
+.cajaazul .datos{
+  text-align: right;
+}
