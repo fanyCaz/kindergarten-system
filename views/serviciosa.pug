@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  div.headadmin
+        p.titulo= "LW"
+  div.central
+    aside.columnaadmin 
+      ul
+        li: a(href="#") Citas
+        li: a(href="#") Niños   
+        li: a(href="#") Servicios
+    div.servicios 
+      div.encabezado
+        p.text-2xl="Agregar un servicio"
+      .formularioserv
+        p nombre de servicio
+        input(type="text" name="servicios")
+        p Rango de edad permitido 
+        select#color(name='color')
+          option(value='r') Rojo
+          option(value='a') Azul
+          option(value='v') Verde
+        p Costo 
+        input(type="text" name="Costo")
+        button: a(href="#") Agregar servicio  
+

@@ -3,7 +3,7 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: black;
 }
 
 @font-face {
@@ -83,4 +83,16 @@ button.agregab a{
 
 .cajaazul .datos{
   text-align: right;
+}
+
+.formularioserv{
+  justify-content:center;
+}
+
+.formularioserv input{
+  border-radius: 6px;
+  color: black;
+}
+.formularioserv button{
+  
 }
