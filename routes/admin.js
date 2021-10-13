@@ -17,4 +17,12 @@ router.get('/schedule', function(req,res,next){
   res.render('schedule');
 });
 
+router.get('/ninos', function(req,res,next){
+  res.render('ninos');
+});
+
+router.get('/infoninos', function(req,res,next){
+  res.render('infoninos');
+});
+
 module.exports = router;

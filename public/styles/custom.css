@@ -57,6 +57,18 @@ div.servicios .encabezado{
   align-items: center;
 }
 
+div.ninos{
+  width: 70%;
+  margin-left: 20px;
+}
+
+div.ninos .encabezado{
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items: center;
+}
+
 button.agregab{
   text-decoration: none;
   padding: 10px;

@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  div.headadmin
+        p.titulo= "LW"
+  div.central
+    aside.columnaadmin 
+      ul
+        li: a(href="#") Citas
+        li: a(href="#") Niños   
+        li: a(href="#") Servicios
+    div.ninos 
+      div.encabezado
+        p="Informacion de niños"
+        button.agregab: a(href="http://localhost:3000/ninos") Volver a niños
+      .cajaazul 
+        .nombres 
+          p Nombre de niño
+          p Alergias
+          p Servicios
+          p comidas
+        .datos
+          p Numero de emergencias
+          p Horas en guarderia
+          p Dias en guarderia
+          p """""""""""""""""""""""""""""""""""""""""""""
+          button(href="#") Cancelar Inscripcion  X
+      
