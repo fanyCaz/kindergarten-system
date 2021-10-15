@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req,res,next){
-  console.log("res");
+  res.render('index');
 });
 
 router.get('/login', function(req,res,next){
