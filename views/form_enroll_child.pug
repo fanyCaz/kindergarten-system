@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  include partials/admin_header
+  div.grid.grid-cols-5
+    include side_menu
+    div.col-span-4
+      div.grid.grid-cols-2.m-10
+        p.m-3.text-3xl.text-green-400= "Inscribir a un niño"
+      div.grid.grid-cols-2.justify-items-center.text-lg
+        div
+          p= "Nombre"
+          input.my-2.border-2.border-black.rounded-md
+          p= "Fecha de nacimiento"
+          input.my-2.border-2.border-black.rounded-md
+          p= "Alergias"
+          input.my-2.border-2.border-black.rounded-md
+          p= "Padecimientos"
+          input.my-2.border-2.border-black.rounded-md
+          p= "Número de emergencia"
+          input.my-2.border-2.border-black.rounded-md
+        div
+          p= "Servicio"
+          input.my-2.border-2.border-black.rounded-md
+          p= "Días de servicio"
+          input.my-2.border-2.border-black.rounded-md
+          p= "Horas diaras"
+          input.my-2.border-2.border-black.rounded-md
+          p= "Fecha de ingreso"
+          input.my-2.border-2.border-black.rounded-md
+      div.grid.justify-items-center.m-10.text-lg
+        button.mt-2.py-2.px-12.rounded-full.bg-green-500.text-white: a(href="http://localhost:3000/admin/final-pricing") Ir a cotización
