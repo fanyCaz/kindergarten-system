@@ -17,6 +17,10 @@ router.get('/schedule', function(req,res,next){
   res.render('schedule');
 });
 
+router.get('/schedule/unique', function(req,res,next){
+  res.render('info_appointment');
+});
+
 router.get('/ninos', function(req,res,next){
   res.render('ninos');
 });
