@@ -29,4 +29,12 @@ router.get('/infoninos', function(req,res,next){
   res.render('infoninos');
 });
 
+router.get('/enroll-child', function(req,res,next){
+  res.render('form_enroll_child');
+});
+
+router.get('/final-pricing', function(req,res,next){
+  res.render('form_pricing_child');
+});
+
 module.exports = router;
