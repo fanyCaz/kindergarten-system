@@ -87,10 +87,7 @@ button.agregab a{
 .cajaazul{
   background-color: #86e2df;
   padding: 10px;
-  display: flex;
-  justify-content: space-between;
   border-radius:10px;
-  margin:20px 0;
 }
 
 .cajaazul .datos{
