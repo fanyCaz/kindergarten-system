@@ -18,4 +18,8 @@ router.get('/infoninos', function(req, res, next) {
   res.render('infoninos', {title: 'Niños'});
 });
 
+router.get('/formulariocita', function(req, res, next) {
+  res.render('formulariocita', {title: ' '});
+});
+
 module.exports = router;

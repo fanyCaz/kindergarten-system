@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  include partials/client_header
+  div.grid.grid-rows-1.grid-cols-2.m-10
+    div.grid.justify-items-center.py-10.text-blue-400.bg-purple-200
+      p.text-3xl.p-8= "FORMULARIO"
+      p.py-2= "USUARIO"
+      input.my-2.border-1.border-black.rounded-md
+      p.py-2= "CONTRASEÑA"
+      input.my-2.border-1.border-black.rounded-md
+      button.mt-2.py-2.px-12.rounded-full.bg-green-300.text-white= "ENTRAR"
+    div.grid.place-content-center.bg-pink-300
+      p.text-4xl.text-blue-400= "MY LITTLE WORLD"
