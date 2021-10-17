@@ -32,9 +32,9 @@ document.addEventListener('DOMContentLoaded', function(){
   calendar.on('dateClick', function(info){
     let modal = document.getElementById('eventModal');
     modal.style.display = "block";
+    //remove intrusive label of calendar
+    document.getElementsByClassName('fc-timegrid-axis-cushion fc-scrollgrid-shrink-cushion fc-scrollgrid-sync-inner')[0].style.display = "none";
   });
-  //remove intrusive label of calendar
-  document.getElementsByClassName('fc-timegrid-axis-cushion fc-scrollgrid-shrink-cushion fc-scrollgrid-sync-inner')[0].style.display = "none";
 });
 
 window.addEventListener('click', function(event){
