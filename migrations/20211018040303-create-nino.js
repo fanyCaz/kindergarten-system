@@ -35,12 +35,6 @@ module.exports = {
       checkOut: {
         type: Sequelize.INTEGER
       },
-      serviceDays: {
-        type: Sequelize.STRING
-      },
-      dailyHours: {
-        type: Sequelize.INTEGER
-      },
       alergies: {
         type: Sequelize.BOOLEAN
       },
