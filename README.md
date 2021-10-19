@@ -14,7 +14,7 @@
 
 Se usa la base de datos MariaDB y el ORM Sequelize.
 
-Para configurarlo sigue las instrucciones del siguiente issue:(Instalar base de datos)[https://github.com/fanyCaz/kindergarten-system/issues/21]
+Para configurarlo sigue las instrucciones del siguiente issue:[Instalar base de datos](https://github.com/fanyCaz/kindergarten-system/issues/21)
 
 Puedes usar el archivo `config/config.json.example` como ejemplo para tu configuración de la base de datos.
 
