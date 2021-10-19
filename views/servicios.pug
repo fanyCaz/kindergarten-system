@@ -1,39 +1,22 @@
 extends layout
 
 block content
-  div.headadmin
-        p.titulo= "LW"
-  div.central
-    aside.columnaadmin 
-      ul
-        li: a(href="#") Citas
-        li: a(href="#") Niños   
-        li: a(href="#") Servicios
-    div.servicios 
-      div.encabezado
-        p="Servicios"
-        button.agregab: a(href="#") Agregar servicio
-      .cajaazul 
-        .nombres 
-          p Nombre de servicio
-          p Costo
-        .datos
-          p Rango de edad para servicio
-          i.far.fa-edit
-          i(class="far fa-trash-alt")
-      .cajaazul 
-        .nombres 
-          p Nombre de servicio
-          p Costo
-        .datos
-          p Rango de edad para servicio
-          i.far.fa-edit
-          i(class="far fa-trash-alt")
-      .cajaazul 
-        .nombres 
-          p Nombre de servicio
-          p Costo
-        .datos
-          p Rango de edad para servicio
-          i.far.fa-edit
-          i(class="far fa-trash-alt")
+ 
+  include partials/admin_header
+  div.grid.grid-cols-5
+    include side_menu
+    div.col-span-4.servicios 
+      div.grid.grid-cols-2.m-10.encabezado
+        p.m-3.text-3xl.text-green-400="Servicios"
+        button.agregab: a(href="http://localhost:3000/admin/servicios") Agregar servicio
+      div.grid.grid-cols-1.gap-4.justify-items-stretch.m-10.text-lg
+        each box in [1,2,3]
+          .cajaazul 
+            .nombres 
+              p Nombre de servicio
+              p Costo
+            .datos
+              p Rango de edad para servicio
+              i.far.fa-edit
+              i(class="far fa-trash-alt")
+
