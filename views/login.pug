@@ -6,10 +6,11 @@ block content
     //div.grid.justify-items-center.py-10.text-blue-400.bg-purple-200 
     form(action="http://localhost:3000/api/auth", method="post").grid.justify-items-center.py-10.text-blue-400.bg-purple-200   
       p.text-3xl.p-8= "ADMINISTRADOR"
-      p.py-2= "USUARIO"
-      input(type="text",name="username").border-1.border-black.rounded-md
-      p.py-2= "CONTRASEÑA"
-      input(type="password",name="password").border-1.border-black.rounded-md
+      div.text-xl
+        p.py-2= "USUARIO"
+        input(type="text",name="username").border-1.border-black.rounded-md
+        p.py-2= "CONTRASEÑA"
+        input(type="password",name="password").border-1.border-black.rounded-md
       button(type="submit").mt-2.py-2.px-12.rounded-full.bg-green-300.text-white= "ENTRAR"
     div.grid.place-content-center.bg-pink-300
       p.text-4xl.text-blue-400= "MY LITTLE WORLD"
