@@ -7,26 +7,29 @@ block content
     div.col-span-4
       div.grid.grid-cols-2.m-10
         p.m-3.text-3xl.text-green-400= "Inscribir a un niño"
-      div.grid.grid-cols-2.justify-items-center.text-lg
-        div
-          p= "Nombre"
-          input.my-2.border-2.border-black.rounded-md
-          p= "Fecha de nacimiento"
-          input.my-2.border-2.border-black.rounded-md
-          p= "Alergias"
-          input.my-2.border-2.border-black.rounded-md
-          p= "Padecimientos"
-          input.my-2.border-2.border-black.rounded-md
-          p= "Número de emergencia"
-          input.my-2.border-2.border-black.rounded-md
-        div
-          p= "Servicio"
-          input.my-2.border-2.border-black.rounded-md
-          p= "Días de servicio"
-          input.my-2.border-2.border-black.rounded-md
-          p= "Horas diaras"
-          input.my-2.border-2.border-black.rounded-md
-          p= "Fecha de ingreso"
-          input.my-2.border-2.border-black.rounded-md
-      div.grid.justify-items-center.m-10.text-lg
-        button.mt-2.py-2.px-12.rounded-full.bg-green-500.text-white: a(href="http://localhost:3000/admin/final-pricing",class="text-white no-underline") Ir a cotización
+      form(action="/admin/add-child" method="POST")
+        div.grid.grid-cols-2.justify-items-center.text-lg
+          div
+            p Nombre
+            input.my-2.border-2.border-black.rounded-md(name="name")
+            p= "Apellido"
+            input.my-2.border-2.border-black.rounded-md(name="lastname")
+            p= "Fecha de nacimiento"
+            input.my-2.border-2.border-black.rounded-md(name="birthdate")
+            p= "Alergias"
+            input.my-2.border-2.border-black.rounded-md(name="alergies")
+            p= "Padecimientos"
+            input.my-2.border-2.border-black.rounded-md(name="chronicCondition")
+            p= "Número de emergencia"
+            input.my-2.border-2.border-black.rounded-md(name="emergencyNumber")
+          div
+            p= "Servicio"
+            input.my-2.border-2.border-black.rounded-md
+            p= "Días de servicio"
+            input.my-2.border-2.border-black.rounded-md
+            p= "Horas diaras"
+            input.my-2.border-2.border-black.rounded-md
+            p= "Fecha de ingreso"
+            input.my-2.border-2.border-black.rounded-md
+        input.mt-2.py-2.px-12.rounded-full.bg-green-500.text-white(type='submit' value='Ir a cotización')
+
