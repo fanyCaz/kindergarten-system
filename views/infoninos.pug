@@ -1,24 +1,25 @@
 extends layout
 
 block content
-  div.headadmin
-        p.titulo= "LW"
-  div.central
+  include partials/admin_header
+  div.grid.grid-cols-5
     include side_menu
-    div.ninos 
-      div.encabezado
-        p="Informacion de niños"
+    div.col-span-4
+      div.grid.grid-cols-2.m-10
+        p.m-3.text-3xl.text-green-400="Informacion de niños"
         button.agregab: a(href="http://localhost:3000/ninos") Volver a niños
-      .cajaazul 
-        .nombres 
-          p Nombre de niño
-          p Alergias
-          p Servicios
-          p comidas
-        .datos
-          p Numero de emergencias
-          p Horas en guarderia
-          p Dias en guarderia
-          p """""""""""""""""""""""""""""""""""""""""""""
-          button(href="#") Cancelar Inscripcion  X
-      
+      div.grid.grid-cols-1.gap-4.justify-items-stretch.m-10.text-lg
+        each box in [1]
+          .cajaazul.grid.grid-cols-2
+            .nombres 
+              p Nombre de niño
+              p Alergias
+              p Servicios
+              p Comidas
+            .datos
+              p Numero de emergencias
+              p Horas en guarderia
+              p Dias en guarderia
+              br
+              button.mt-2.py-2.px-12.rounded-full.bg-red-500.text-white: a(href="#",class="text-white no-underline") Cancelar Inscripcion X
+          
