@@ -1,13 +1,18 @@
 var express = require('express');
 var router = express.Router();
 const childController = require('../controllers/childController');
+var axios = require('axios')
 
 router.get('/', function(req,res,next){
   res.render('index');
 });
 
 router.get('/login', function(req,res,next){
-  res.render('login');
+    res.render('login');
+});
+
+router.post('/login', function(req,res,next){
+  
 });
 
 router.get('/servicios', function(req,res,next){
