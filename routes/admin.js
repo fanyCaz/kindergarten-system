@@ -13,6 +13,8 @@ router.get('/servicios', function(req,res,next){
   res.render('servicios');
 });
 router.get('/serviciosagregar', function(req,res,next){
+  
+
   res.render('serviciosa');
 });
 
