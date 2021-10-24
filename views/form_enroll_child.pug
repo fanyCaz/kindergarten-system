@@ -4,32 +4,35 @@ block content
   include partials/admin_header
   div.grid.grid-cols-5
     include side_menu
-    div.col-span-4
+    div.col-span-4.h-full
       div.grid.grid-cols-2.m-10
         p.m-3.text-3xl.text-green-400= "Inscribir a un niño"
       form(action="/admin/add-child" method="POST")
-        div.grid.grid-cols-2.justify-items-center.text-lg
-          div
-            p Nombre
-            input.my-2.border-2.border-black.rounded-md(name="name")
-            p= "Apellido"
-            input.my-2.border-2.border-black.rounded-md(name="lastname")
-            p= "Fecha de nacimiento"
-            input.my-2.border-2.border-black.rounded-md(name="birthdate")
-            p= "Alergias"
-            input.my-2.border-2.border-black.rounded-md(name="alergies")
-            p= "Padecimientos"
-            input.my-2.border-2.border-black.rounded-md(name="chronicCondition")
-            p= "Número de emergencia"
-            input.my-2.border-2.border-black.rounded-md(name="emergencyNumber")
-          div
-            p= "Servicio"
-            input.my-2.border-2.border-black.rounded-md
-            p= "Días de servicio"
-            input.my-2.border-2.border-black.rounded-md
-            p= "Horas diaras"
-            input.my-2.border-2.border-black.rounded-md
-            p= "Fecha de ingreso"
-            input.my-2.border-2.border-black.rounded-md
-        input.mt-2.py-2.px-12.rounded-full.bg-green-500.text-white(type='submit' value='Ir a cotización')
+        div.grid.grid-rows-2.justify-items-center.text-lg
+          div.grid.grid-cols-2.gap-x-10
+            div
+              p Nombre
+              input.my-2.border-2.border-black.rounded-md(name="name")
+              p= "Apellido"
+              input.my-2.border-2.border-black.rounded-md(name="lastname")
+              p= "Fecha de nacimiento"
+              input.my-2.border-2.border-black.rounded-md.w-full(name="birthdate", type="date")
+              p= "Alergias"
+              input.my-2.border-2.border-black.rounded-md(name="alergies")
+              p= "Padecimientos"
+              input.my-2.border-2.border-black.rounded-md(name="chronicCondition")
+              p= "Número de emergencia"
+              input.my-2.border-2.border-black.rounded-md(name="emergencyNumber")
+            div
+              p Servicio
+              select.my-2.border-2.border-black.rounded-md.w-full(name="service")
+                each opt in servicesOptions
+                  option(value=opt)= opt
+              p Días de servicio
+              input.my-2.border-2.border-black.rounded-md(name="days")
+              p= "Horas diaras"
+              input.my-2.border-2.border-black.rounded-md(name="dailyHours")
+              p= "Fecha de ingreso"
+              input.my-2.border-2.border-black.rounded-md.w-full(name="entryDate", type="date", min=todaysDate)
+          input.mt-2.py-2.px-12.rounded-full.bg-green-500.text-white.h-12(type='submit' value='Ir a cotización')
 
