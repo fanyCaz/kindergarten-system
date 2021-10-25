@@ -4,11 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var passport = require('passport');
+var flash = require('connect-flash');
+var session = require('express-session')
 
 const indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 var apiRouter = require('./routes/api');
+
 
 var app = express();
 
@@ -17,8 +20,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 //setup passport
+app.use(session({
+  secret:'ultra secret secret',
+  resave: true,
+  saveUninitialized: true
+}));
 app.use(passport.initialize());
+app.use(passport.session())
 
+app.use(flash());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

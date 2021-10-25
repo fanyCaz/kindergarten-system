@@ -4,6 +4,7 @@ module.exports = {
       nombre: 'John',
       apellido: 'Doe',
       email: 'example@example.com',
+      password:'password',
       createdAt: new Date(),
       updatedAt: new Date()
     }]);
