@@ -14,7 +14,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     return queryInterface.removeColumn(
       'usuarios',
-      'passwod'
+      'password'
     );
   }
 };
