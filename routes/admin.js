@@ -20,8 +20,7 @@ router.get('/servicios', function(req,res,next){
 });
 
 router.get('/serviciosagregar', function(req,res,next){
-  //declarar variables en la vista
-  // res.render('serviciosa');
+  res.render('serviciosa');
 });
 
 router.get('/schedule', function(req,res,next){
