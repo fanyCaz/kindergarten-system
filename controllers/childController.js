@@ -56,11 +56,27 @@ function calculateAge(birthdate){
   return age;
 }
 
+exports.findChild = async(req,res,next) => {
+  let childId = req.params.id;
+  let child = await Nino.findOne({ id: childId });
+  return child;
+};
+
 exports.findChildren = async(req,res,next) => {
-  let childs = await Nino.findAll({
-    attributes: ['firstName','lastName','emergencyNumber','ageYears']
+  console.log("entra aqui")
+  let children = await Nino.findAll({
+    attributes: ['id','firstName','lastName','emergencyNumber','ageYears']
+  }).then(function(res){
+    console.log(res)
+  }).catch(function(error){
+    console.log(error)
   });
-  return childs;
+  console.log("antes de mirror")
+  res.render('ninos', {
+    children: children
+  });
+  //next()
+  //return childs;
 };
 
 exports.addChild = async(req,res,next) => {

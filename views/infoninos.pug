@@ -9,17 +9,11 @@ block content
         p.m-3.text-3xl.text-green-400="Informacion de niños"
         button.agregab: a(href="http://localhost:3000/ninos") Volver a niños
       div.grid.grid-cols-1.gap-4.justify-items-stretch.m-10.text-lg
-        each box in [1]
-          .cajaazul.grid.grid-cols-2
-            .nombres 
-              p Nombre de niño
-              p Alergias
-              p Servicios
-              p Comidas
-            .datos
-              p Numero de emergencias
-              p Horas en guarderia
-              p Dias en guarderia
-              br
-              button.mt-2.py-2.px-12.rounded-full.bg-red-500.text-white: a(href="#",class="text-white no-underline") Cancelar Inscripcion X
-          
+        .cajaazul.grid.grid-cols-2
+          .nombres 
+            p= child.firstName + " " + child.lastName
+            p= (child.alergiesDescription) ? child.alergiesDescription : "Sin alergias"
+          .datos
+            p= child.emergencyNumber
+            br
+            button.mt-2.py-2.px-12.rounded-full.bg-red-500.text-white: a(href="#",class="text-white no-underline") Cancelar Inscripcion X

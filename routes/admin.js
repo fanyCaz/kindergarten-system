@@ -33,15 +33,17 @@ router.get('/schedule/unique', function(req,res,next){
 
 //NIÑOS
 
-router.get('/ninos', async function(req,res,next){
-  let children = await childController.findChildren();
+router.get('/ninos', childController.findChildren);
+/*
+  console.log(children);
   res.render('ninos', {
     children: children
   });
 });
-
-router.get('/infoninos', function(req,res,next){
-  res.render('infoninos');
+*/
+router.get('/info-nino/:id', async function(req,res,next){
+  let childInfo = await childController.findChild;
+  res.render('infoninos',{ child: childInfo });
 });
 
 router.get('/enroll-child', function(req,res,next){
