@@ -33,8 +33,11 @@ router.get('/schedule/unique', function(req,res,next){
 
 //NIÑOS
 
-router.get('/ninos', function(req,res,next){
-  res.render('ninos');
+router.get('/ninos', async function(req,res,next){
+  let children = await childController.findChildren();
+  res.render('ninos', {
+    children: children
+  });
 });
 
 router.get('/infoninos', function(req,res,next){

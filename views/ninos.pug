@@ -9,13 +9,14 @@ block content
         p.m-3.text-3xl.text-green-400="Niños"
         button.agregab: a(href="http://localhost:3000/admin/enroll-child") Inscribir un niño
       div.grid.grid-cols-1.gap-4.justify-items-stretch.m-10.text-lg
-        each box in [1,2,3]
+        each child in children
           .cajaazul.grid.grid-cols-2
             .nombres 
-              p Nombre niño
-              p Edad
+              p= child.firstName + child.lastName
+              p= child.ageYears
             .datos
-              p Numero de emergencias
+              p Numero de emergencia
+              p= child.emergencyNumber
               p Nombre de la mamá
               i.far.fa-edit
               i(class="far fa-trash-alt")
