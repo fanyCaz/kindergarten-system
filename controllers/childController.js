@@ -155,7 +155,7 @@ exports.modifyChild = async(req,res,next) =>{
   let nino;
   nino = await Nino.findOne({
     where: { id: childId },
-    attributes: ['firstName','lastName','emergencyNumber','ageYears', 'id']
+    attributes: ['firstName','lastName','id']
   }).then(function(res) {
     console.log(res)
     if (dateExists){
