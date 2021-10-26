@@ -30,6 +30,7 @@ exports.addService = async(req,res,next) => {
     statusMsg = "Ha ocurrido un error, porfavor,intenta de nuevo";
   });
  
+  res.redirect('/admin/ninos/');
   
 };
 
