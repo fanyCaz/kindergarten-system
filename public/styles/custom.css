@@ -60,6 +60,18 @@ div.servicios .encabezado{
   align-items: center;
 }
 
+div.ninos{
+  width: 70%;
+  margin-left: 20px;
+}
+
+div.ninos .encabezado{
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items: center;
+}
+
 button.agregab{
   text-decoration: none;
   padding: 10px;
@@ -78,15 +90,13 @@ button.agregab a{
 .cajaazul{
   background-color: #86e2df;
   padding: 10px;
-  display: flex;
-  justify-content: space-between;
   border-radius:10px;
-  margin:20px 0;
 }
 
 .cajaazul .datos{
   text-align: right;
 }
+
 
 .formularioserv{
   display: block;
@@ -131,3 +141,18 @@ button.agregab a{
   justify-content: center;
 }
 .servicios>*{margin: 50px 0}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+

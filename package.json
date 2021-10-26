@@ -13,6 +13,7 @@
   "dependencies": {
     "@fullcalendar/core": "^5.9.0",
     "autoprefixer": "^10.3.7",
+    "axios": "^0.23.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
@@ -20,10 +21,12 @@
     "http-errors": "~1.6.3",
     "mariadb": "^2.5.4",
     "morgan": "~1.9.1",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0",
     "postcss": "^8.3.9",
     "postcss-cli": "^9.0.1",
     "pug": "^3.0.2",
-    "sequelize": "^6.6.5",
+    "sequelize": "^6.7.0",
     "tailwindcss": "^2.2.16"
   },
   "devDependencies": {
