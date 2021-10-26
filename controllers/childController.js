@@ -48,9 +48,9 @@ function calculateAge(birthdate){
   }
 
   age = {
-      years: yearAge,
-      months: monthAge,
-      days: dateAge
+      years: yearAge || 1,
+      months: monthAge || 1,
+      days: dateAge || 1
       };
 
   return age;
@@ -108,14 +108,15 @@ exports.addChild = async(req,res,next) => {
     emergencyNumber: childData.emergencyNumber,
     ageDays: age.days,
     ageMonths: age.months,
-    ageYears: age.yearAge,
-    ClienteId: 1
+    ageYears: age.yearAge
   })
   .then(function(res){
     addedNino = res;
     statusMsg = "El niño se ha guardado correctamente";
+    console.log("correctamente")
   })
   .catch(function(error){
+    console.log(error)
     statusMsg = "Ha ocurrido un error, porfavor,intenta de nuevo";
   });
   //Agregar a tabla serviciosnino
