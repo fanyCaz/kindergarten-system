@@ -4,10 +4,10 @@ block content
   include partials/admin_header
   div.grid.grid-cols-5
     include side_menu
-    div.col-span-4
+    div.col-span-4.h-full
       div.grid.grid-cols-2.m-10
         p.m-3.text-3xl.text-green-400="Informacion de niños"
-        button.agregab: a(href="http://localhost:3000/ninos") Volver a niños
+        button.agregab: a(href="http://localhost:3000/admin/ninos") Volver a niños
       div.grid.grid-cols-1.gap-4.justify-items-stretch.m-10.text-lg
         .cajaazul.grid.grid-cols-2
           .nombres 

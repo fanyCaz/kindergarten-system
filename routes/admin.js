@@ -34,17 +34,8 @@ router.get('/schedule/unique', function(req,res,next){
 //NIÑOS
 
 router.get('/ninos', childController.findChildren);
-/*
-  console.log(children);
-  res.render('ninos', {
-    children: children
-  });
-});
-*/
-router.get('/info-nino/:id', async function(req,res,next){
-  let childInfo = await childController.findChild;
-  res.render('infoninos',{ child: childInfo });
-});
+
+router.get('/info-nino/:id', childController.findChild);
 
 router.get('/enroll-child', function(req,res,next){
   let servicesOptions = [1,2,3,4,5];
