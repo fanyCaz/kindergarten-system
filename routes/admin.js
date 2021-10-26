@@ -96,22 +96,15 @@ router.post('/add-child',
   childController.addChild
 );
 
-<<<<<<< HEAD
-//(router.post('/add-service',
-//  servController.addSerivce
-//);
 
 router.post('/add-service',
   servController.addService
 );
 
-
-=======
 router.post('/modify-child',
     childController.modifyChild
 );
 
->>>>>>> 9a44025fc098801261baac30bae6dedc996b532e
 router.post('/add-child-cotization/',
   childController.addCotization
 );
