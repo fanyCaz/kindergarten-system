@@ -75,6 +75,7 @@ exports.findChild = async(req,res,next) => {
 };
 
 exports.findChildren = async(req,res,next) => {
+  console.log("entra aqui")
   let children = [];
   await Nino.findAll({
     attributes: ['id','firstName','lastName','emergencyNumber','ageYears']
