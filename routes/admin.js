@@ -44,6 +44,8 @@ router.get('/schedule/unique', function(req,res,next){
 //no auth
 router.get('/ninos', childController.findChildren);
 
+router.get('/modificar-nino/:id', childController.findChild2);
+
 router.get('/info-nino/:id', childController.findChild);
 
 /*
@@ -91,6 +93,10 @@ router.get('/final-pricing/:id', function(req,res,next){
 
 router.post('/add-child',
   childController.addChild
+);
+
+router.post('/modify-child',
+    childController.modifyChild
 );
 
 router.post('/add-child-cotization/',

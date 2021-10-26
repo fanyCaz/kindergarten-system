@@ -17,7 +17,9 @@ block content
             .datos
               p Numero de emergencia
               p= child.emergencyNumber
-              i.far.fa-edit
+              button
+                a(href="http://localhost:3000/admin/modificar-nino/"+child.id)
+                  i.far.fa-edit
               i(class="far fa-trash-alt")
               br
               button.mt-2.py-2.px-12.rounded-full.bg-green-500.text-white: a(href="http://localhost:3000/admin/info-nino/"+child.id,class="text-white no-underline") Ver informacion extra
