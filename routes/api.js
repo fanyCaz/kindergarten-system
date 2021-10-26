@@ -21,7 +21,7 @@ passport.serializeUser(function(user, done) {
 passport.use(new passportLocal(async function(username,password,done){
     const user = await User.findOne({where:{email:username}})
     .then(function(user){
-      console.log(user)
+      ///console.log(user)
       if(user == null){
         return done(null,false);
       }
