@@ -11,9 +11,19 @@ block content
       div.grid.grid-cols-1.gap-4.justify-items-stretch.m-10.text-lg
         .cajaazul.grid.grid-cols-2
           .nombres 
+            p Nombre:
             p= child.firstName + " " + child.lastName
+            br
+            p Alergia:
             p= (child.alergiesDescription) ? child.alergiesDescription : "Sin alergias"
+            br
+            p Padecimientos: 
+            p=child.chronicConditionDescription
           .datos
+            p Numero de emergencia:
             p= child.emergencyNumber
+            br 
+            br
+            br
             br
             button.mt-2.py-2.px-12.rounded-full.bg-red-500.text-white: a(href="#",class="text-white no-underline") Cancelar Inscripcion X

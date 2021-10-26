@@ -45,6 +45,8 @@ router.get('/schedule/unique', function(req,res,next){
 //no auth
 router.get('/ninos', childController.findChildren);
 
+router.get('/modificar-nino/:id', childController.findChildToEdit);
+
 router.get('/info-nino/:id', childController.findChild);
 
 /*
@@ -94,6 +96,7 @@ router.post('/add-child',
   childController.addChild
 );
 
+<<<<<<< HEAD
 //(router.post('/add-service',
 //  servController.addSerivce
 //);
@@ -103,6 +106,12 @@ router.post('/add-service',
 );
 
 
+=======
+router.post('/modify-child',
+    childController.modifyChild
+);
+
+>>>>>>> 9a44025fc098801261baac30bae6dedc996b532e
 router.post('/add-child-cotization/',
   childController.addCotization
 );

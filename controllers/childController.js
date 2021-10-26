@@ -63,7 +63,14 @@ exports.findChild = async(req,res,next) => {
   let child;
   await Nino.findOne({
     where: { id: childId },
-    attributes: ['firstName','lastName','emergencyNumber','ageYears']
+    attributes: ['firstName',
+                  'lastName',
+                  'emergencyNumber',
+                  'ageYears',
+                  'alergiesDescription',
+                  'chronicConditionDescription',
+                  'birthData',
+                  'entryDate']
   }).then(function(res) {
     console.log(res)
     child = res;
@@ -74,11 +81,37 @@ exports.findChild = async(req,res,next) => {
   res.render('infoninos',{ child: child });
 };
 
+exports.findChildToEdit = async(req,res,next) => {
+  console.log("Entra a find child2")
+  console.log(req.params)
+  let childId = req.params.id;
+  let child;
+  await Nino.findOne({
+    where: { id: childId },
+    attributes: ['firstName','lastName','emergencyNumber','ageYears', 'id', 'alergiesDescription', 'chronicConditionDescription', 'birthData']
+  }).then(function(res) {
+    console.log(res)
+    child = res;
+  }).catch(function(error){
+    console.log("error");
+    console.log(error)
+  });
+  res.render('modificar-nino',{ child: child });
+};
+
 exports.findChildren = async(req,res,next) => {
   console.log("entra aqui")
   let children = [];
   await Nino.findAll({
-    attributes: ['id','firstName','lastName','emergencyNumber','ageYears']
+    attributes: ['id',
+                'firstName',
+                'lastName',
+                'emergencyNumber',
+                'ageYears',
+                'alergiesDescription',
+                'chronicConditionDescription',
+                'birthData',
+                'entryDate']
   }).then(function(res){
     children = res;
   }).catch(function(error){
@@ -122,6 +155,58 @@ exports.addChild = async(req,res,next) => {
   //Agregar a tabla serviciosnino
   res.redirect('/admin/final-pricing/'+addedNino.id);
 };
+
+exports.modifyChild = async(req,res,next) =>{
+  console.log("entre a MODIFY")
+  let childData = req.body;
+  let dateExists = true;
+  if(childData.birthdate === ''){
+    dateExists = false;
+  }
+
+
+  console.log(childData)
+  let childId = req.body.id
+  let nino;
+  nino = await Nino.findOne({
+    where: { id: childId },
+    attributes: ['firstName','lastName','id']
+  }).then(function(res) {
+    console.log(res)
+    if (dateExists){
+      res.update(
+          {
+            firstName: childData.name,
+            lastName: childData.lastname,
+            birthData: childData.birthdate,
+            alergiesDescription: childData.alergies,
+            chronicConditionDescription: childData.chronicCondition,
+            emergencyNumber: childData.emergencyNumber
+          }
+      ).then(function (){
+          }
+      );
+    }else{
+      res.update(
+          {
+            firstName: childData.name,
+            lastName: childData.lastname,
+            alergiesDescription: childData.alergies,
+            chronicConditionDescription: childData.chronicCondition,
+            emergencyNumber: childData.emergencyNumber
+          }
+      ).then(function (){
+          }
+      );
+    }
+
+  }).catch(function(error){
+    console.log("error");
+    console.log(error)
+  });
+  res.redirect("/admin/ninos");
+};
+
 
 exports.addCotization = async(req,res,next) => {
   let cotizationBody = req.body;
