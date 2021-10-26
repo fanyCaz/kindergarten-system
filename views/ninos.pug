@@ -12,10 +12,11 @@ block content
         each child in children
           .cajaazul.grid.grid-cols-2
             .nombres 
+              p Nombre:
               p= child.firstName + " " + child.lastName
               p= child.ageYears
             .datos
-              p Numero de emergencia
+              p Numero de emergencia:
               p= child.emergencyNumber
               i.far.fa-edit
               i(class="far fa-trash-alt")
