@@ -74,7 +74,7 @@ exports.findChild = async(req,res,next) => {
   res.render('infoninos',{ child: child });
 };
 
-exports.findChild2 = async(req,res,next) => {
+exports.findChildToEdit = async(req,res,next) => {
   console.log("Entra a find child2")
   console.log(req.params)
   let childId = req.params.id;
