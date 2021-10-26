@@ -44,7 +44,7 @@ router.get('/schedule/unique', function(req,res,next){
 //no auth
 router.get('/ninos', childController.findChildren);
 
-router.get('/modificar-nino/:id', childController.findChild2);
+router.get('/modificar-nino/:id', childController.findChildToModify);
 
 router.get('/info-nino/:id', childController.findChild);
 
