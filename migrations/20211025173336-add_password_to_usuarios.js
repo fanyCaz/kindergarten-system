@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.addColumn(
-      'usuarios',
+      'Usuarios',
       'password',{
         type:Sequelize.STRING,
         allowNull:true,
@@ -13,7 +13,7 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     return queryInterface.removeColumn(
-      'usuarios',
+      'Usuarios',
       'password'
     );
   }

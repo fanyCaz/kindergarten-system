@@ -4,20 +4,22 @@ block content
   include partials/admin_header
   div.grid.grid-cols-5
     include side_menu
-    div.col-span-4
+    div.col-span-4.h-full
       div.grid.grid-cols-2.m-10
         p.m-3.text-3xl.text-green-400="Niños"
         button.agregab: a(href="http://localhost:3000/admin/enroll-child") Inscribir un niño
       div.grid.grid-cols-1.gap-4.justify-items-stretch.m-10.text-lg
-        each box in [1,2,3]
+        each child in children
           .cajaazul.grid.grid-cols-2
             .nombres 
-              p Nombre niño
-              p Edad
+              p= child.firstName + " " + child.lastName
+              p= child.ageYears
             .datos
-              p Numero de emergencias
-              p Nombre de la mamá
+              p Numero de emergencia
+              p= child.emergencyNumber
               i.far.fa-edit
               i(class="far fa-trash-alt")
               br
-              button.mt-2.py-2.px-12.rounded-full.bg-green-500.text-white: a(href="http://localhost:3000/infoninos",class="text-white no-underline") Ver informacion extra
+              button.mt-2.py-2.px-12.rounded-full.bg-green-500.text-white: a(href="http://localhost:3000/admin/info-nino/"+child.id,class="text-white no-underline") Ver informacion extra
+        else
+          p= "No hay niños"
