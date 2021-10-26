@@ -63,7 +63,14 @@ exports.findChild = async(req,res,next) => {
   let child;
   await Nino.findOne({
     where: { id: childId },
-    attributes: ['firstName','lastName','emergencyNumber','ageYears']
+    attributes: ['firstName',
+                  'lastName',
+                  'emergencyNumber',
+                  'ageYears',
+                  'alergiesDescription',
+                  'chronicConditionDescription',
+                  'birthData',
+                  'entryDate']
   }).then(function(res) {
     console.log(res)
     child = res;
@@ -78,7 +85,15 @@ exports.findChildren = async(req,res,next) => {
   console.log("entra aqui")
   let children = [];
   await Nino.findAll({
-    attributes: ['id','firstName','lastName','emergencyNumber','ageYears']
+    attributes: ['id',
+                'firstName',
+                'lastName',
+                'emergencyNumber',
+                'ageYears',
+                'alergiesDescription',
+                'chronicConditionDescription',
+                'birthData',
+                'entryDate']
   }).then(function(res){
     children = res;
   }).catch(function(error){
