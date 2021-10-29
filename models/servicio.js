@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
   Servicio.init({
     minAge: DataTypes.INTEGER,
     maxAge: DataTypes.INTEGER,
-    cost: DataTypes.DECIMAL
+    cost: DataTypes.DECIMAL,
+    name: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Servicio',

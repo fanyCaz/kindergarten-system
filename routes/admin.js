@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const childController = require('../controllers/childController');
+const servController = require('../controllers/servController');
 var axios = require('axios')
 
 router.get('/', function(req,res,next){
@@ -91,6 +92,11 @@ router.get('/final-pricing/:id', function(req,res,next){
 
 router.post('/add-child',
   childController.addChild
+);
+
+
+router.post('/add-service',
+  servController.addService
 );
 
 router.post('/modify-child',
