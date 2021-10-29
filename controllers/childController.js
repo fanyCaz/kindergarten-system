@@ -57,6 +57,10 @@ function calculateAge(birthdate){
 }
 
 exports.findChild = async(req,res,next) => {
+  if(!req.isAuthenticated()) {
+    return res.redirect("/admin/login");
+  } 
+  // if authenticated it proceeds with normal procedure
   console.log("Entra a find child")
   console.log(req.params)
   let childId = req.params.id;
@@ -78,7 +82,8 @@ exports.findChild = async(req,res,next) => {
     console.log("error");
     console.log(error)
   });
-  res.render('infoninos',{ child: child });
+  return res.render('infoninos',{ child: child });
+  
 };
 
 exports.findChildToEdit = async(req,res,next) => {
@@ -100,6 +105,10 @@ exports.findChildToEdit = async(req,res,next) => {
 };
 
 exports.findChildren = async(req,res,next) => {
+  if(!req.isAuthenticated()) {
+   return res.redirect("/admin/login");
+  }
+  // if authenticated it proceeds with normal procedure
   console.log("entra aqui")
   let children = [];
   await Nino.findAll({
@@ -117,9 +126,11 @@ exports.findChildren = async(req,res,next) => {
   }).catch(function(error){
     console.log(error)
   });
-  res.render('ninos', {
+  return res.render('ninos', {
     children: children
-  });
+  }); 
+
+
 };
 
 exports.addChild = async(req,res,next) => {
