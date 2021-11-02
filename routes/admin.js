@@ -50,27 +50,6 @@ router.get('/modificar-nino/:id', childController.findChildToEdit);
 
 router.get('/info-nino/:id', childController.findChild);
 
-/*
-router.get('/ninos', function(req,res,next){
-  console.log("entra")
-  childController.findChildren
-});
-
-router.get('/info-nino/:id', function(req,res,next){
-  if(req.isAuthenticated()) return next();
-  res.redirect("/admin/login");
-}, function(req,res,next){
-  childController.findChild
-});
-
-router.get('/ninos', function(req,res,next){
-  if(req.isAuthenticated()) return next();
-  res.redirect("/admin/login");
-}, function(req,res,next){
-  res.render('ninos');
-});
-*/
-
 router.get('/enroll-child', function(req,res,next){
   if(req.isAuthenticated()) return next();
   res.redirect("/admin/login");

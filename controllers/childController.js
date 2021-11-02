@@ -61,8 +61,6 @@ exports.findChild = async(req,res,next) => {
     return res.redirect("/admin/login");
   } 
   // if authenticated it proceeds with normal procedure
-  console.log("Entra a find child")
-  console.log(req.params)
   let childId = req.params.id;
   let child;
   await Nino.findOne({
@@ -109,9 +107,9 @@ exports.findChildren = async(req,res,next) => {
    return res.redirect("/admin/login");
   }
   // if authenticated it proceeds with normal procedure
-  console.log("entra aqui")
   let children = [];
   await Nino.findAll({
+    where: { status: 1 },
     attributes: ['id',
                 'firstName',
                 'lastName',
@@ -130,17 +128,14 @@ exports.findChildren = async(req,res,next) => {
     children: children
   }); 
 
-
 };
 
 exports.addChild = async(req,res,next) => {
   // Req -> Request
   //Normalizar nombres de formulario a nombre que esta en modelo y en base de datos
-  //Agregar select donde estan los clientes, y seleccionar de ahí
   let childData = req.body;
   let statusMsg = "";
   let addedNino ;
-  //let birthdate = new Date(childData.birthdate)
   let age = calculateAge(childData.birthdate);
   await Nino.create({
     firstName: childData.name,
@@ -152,7 +147,8 @@ exports.addChild = async(req,res,next) => {
     emergencyNumber: childData.emergencyNumber,
     ageDays: age.days,
     ageMonths: age.months,
-    ageYears: age.yearAge
+    ageYears: age.yearAge,
+    status: 1
   })
   .then(function(res){
     addedNino = res;
