@@ -48,10 +48,10 @@ function calculateAge(birthdate){
   }
 
   age = {
-      years: yearAge || 1,
-      months: monthAge || 1,
-      days: dateAge || 1
-      };
+    years: yearAge || 1,
+    months: monthAge || 1,
+    days: dateAge || 1
+  };
 
   return age;
 }

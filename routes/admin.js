@@ -5,7 +5,7 @@ const servController = require('../controllers/servController');
 var axios = require('axios')
 
 router.get('/', function(req,res,next){
-  res.render('index');
+  res.redirect("/admin/login");
 });
 
 router.get('/login', function(req,res,next){
