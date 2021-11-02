@@ -8,7 +8,6 @@ var flash = require('connect-flash');
 var session = require('express-session')
 
 const indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 var apiRouter = require('./routes/api');
 
@@ -38,7 +37,6 @@ app.use(express.static('public'));
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
-app.use('/users', usersRouter);
 app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
