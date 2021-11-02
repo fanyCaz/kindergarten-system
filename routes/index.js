@@ -6,16 +6,4 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home' });
 });
 
-router.get('/servicios', function(req, res, next) {
-  res.render('servicios', {title: 'Servicios'});
-});
-
-router.get('/ninos', function(req, res, next) {
-  res.render('ninos', {title: 'Niños'});
-});
-
-router.get('/infoninos', function(req, res, next) {
-  res.render('infoninos', {title: 'Niños'});
-});
-
 module.exports = router;
