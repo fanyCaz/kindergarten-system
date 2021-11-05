@@ -6,6 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home' });
 });
 
+<<<<<<< HEAD
 router.get('/servicios', function(req, res, next) {
   res.render('servicios', {title: 'Servicios'});
 });
@@ -22,4 +23,6 @@ router.get('/formulariocita', function(req, res, next) {
   res.render('formulariocita', {title: ' '});
 });
 
+=======
+>>>>>>> 0bd256802f62d09c9f6153063112dd7a95f501f9
 module.exports = router;

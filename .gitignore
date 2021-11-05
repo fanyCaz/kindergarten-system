@@ -1,4 +1,5 @@
 # Logs
+.idea/
 logs
 *.log
 npm-debug.log*
@@ -74,6 +75,10 @@ web_modules/
 .env.test
 .env.production
 
+#config
+
+config/config.json
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
@@ -116,3 +121,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+#editor
+*.swp
+config/config.json
