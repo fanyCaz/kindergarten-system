@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  include partials/client_header
+  div.grid
+    div.m-10.text-3xl.text-green-400.text-center
+      p ¿Quieres conocer más?
+      p Agenda una cita con nosotros
+    div.grid.place-items-stretch.m-10
+      div#calendar
+    script(src='/javascripts/client_calendar.js')

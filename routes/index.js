@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home' });
 });
 
+router.get('/calendar', function(req, res, next) {
+  res.render('client_calendar');
+});
+
 module.exports = router;
