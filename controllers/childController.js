@@ -102,6 +102,25 @@ exports.findChildToEdit = async(req,res,next) => {
   res.render('modificar-nino',{ child: child });
 };
 
+exports.findChildToCancelar = async(req,res,next) => {
+  console.log("Entra a find child3")
+  console.log(req.params)
+  let childId = req.params.id;
+  let child;
+  await Nino.findOne({
+    where: { id: childId },
+    attributes: ['firstName','lastName','status','id']
+  }).then(function(res) {
+    console.log(res)
+    child = res;
+  }).catch(function(error){
+    console.log("error");
+    console.log(error)
+  });
+  res.render('cancelar-nino',{ child: child });
+};
+
+
 exports.findChildren = async(req,res,next) => {
   if(!req.isAuthenticated()) {
    return res.redirect("/admin/login");
@@ -214,6 +233,48 @@ exports.modifyChild = async(req,res,next) =>{
   res.redirect("/admin/ninos");
 };
 
+exports.cancelarChild = async(req,res,next) =>{
+  console.log("entre a cancelar")
+  let childData = req.body;
+  if(childData.status === 1){
+    childData.status === 0
+  }
+
+  console.log(childData)
+  let childId = req.body.id
+  let nino;
+  nino = await Nino.findOne({
+    where: { id: childId },
+    attributes: ['firstName','lastName','status','id']
+  }).then(function(res) {
+    console.log(res)
+    if (childData.status === 1){
+      res.update(
+          {
+            firstName: childData.name,
+            lastName: childData.lastname,
+            status: childData.status
+          }
+      ).then(function (){
+          }
+      );
+    }else{
+      res.update(
+          {
+            firstName: childData.name,
+            lastName: childData.lastname,
+          }
+      ).then(function (){
+          }
+      );
+    }
+
+  }).catch(function(error){
+    console.log("error");
+    console.log(error)
+  });
+  res.redirect("/admin/ninos");
+};
 
 exports.addCotization = async(req,res,next) => {
   let cotizationBody = req.body;
