@@ -30,7 +30,13 @@ document.addEventListener('DOMContentLoaded', function(){
   calendar.render();
 
   calendar.on('dateClick', function(info){
+    let dateSelected = new Date(info.dateStr);
+    let minutes = dateSelected.getMinutes() < 10 ? dateSelected.getMinutes() + "0" : dateSelected.getMinutes();
     let modal = document.getElementById('eventModal');
+    let startHour = modal.querySelector('#start_hour');
+    startHour.value = dateSelected.getHours() + ":" + minutes;
+    let endHour = modal.querySelector('#end_hour');
+    endHour.value = dateSelected.getHours() + ":" + (parseInt(minutes) + 30);
     modal.style.display = "block";
     //remove intrusive label of calendar
     document.getElementsByClassName('fc-timegrid-axis-cushion fc-scrollgrid-shrink-cushion fc-scrollgrid-sync-inner')[0].style.display = "none";

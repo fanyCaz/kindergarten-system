@@ -1,8 +1,11 @@
 div#eventModal.modal.hidden
-  div.grid.justify-content-center.w-96.bg-pink-100.p-12.rounded-md
-    p.text-xl.text-green-500= "Agregar horario"
-    p.text-lg= "Hora de inicio"
-    input(name= 'start', class="p-2")
-    p.text-lg= "Hora de termino"
-    input(name= 'end', class="p-2")
-    button.bg-green-500.text-lg.p-2.my-2.rounded-md.text-white= "Guardar"
+  div.grid.justify-content-center.w-96.bg-pink-100.p-12.rounded-md.m-auto
+    form(action="/admin/add-appointment" method="POST")
+      div
+        p.text-xl.text-green-500 Agregar horario
+        p.text-lg Hora de inicio
+        input#start_hour(name= 'start_hour', class="p-2 w-full", type="time")
+        p.text-lg Hora de termino
+        input#end_hour(name= 'end_hour', class="p-2 w-full", type="time")
+        input#day(name='day', class="hidden")
+      input.bg-green-500.text-lg.p-2.my-2.rounded-md.text-white(type='submit' value='Agregar horario')
