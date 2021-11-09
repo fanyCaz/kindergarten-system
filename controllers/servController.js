@@ -53,6 +53,48 @@ exports.findServices = async(req,res,next) => {
   return res.render('servicios', {
     services: services
   });
-
 };
 
+exports.findServToEdit = async(req,res,next) => {
+  let servId = req.params.id;
+  let service;
+  await Servicio.findOne({
+    where: { id: servId },
+    attributes: ['name','cost','minAge','maxAge', 'id']
+  }).then(function(res) {
+    console.log(res)
+    service = res;
+  }).catch(function(error){
+    console.log("error");
+    console.log(error)
+  });
+  res.render('modificar-serv',{ service: service });
+};
+
+exports.modifyService = async(req,res,next) =>{
+  console.log("entre a MODIFY")
+  let serviceData = req.body;
+  console.log(serviceData);
+  let servId = req.body.id
+  let servicio;
+  servicio = await Servicio.findOne({
+    where: { id: servId },
+    attributes: ['name','cost','id', 'minAge', 'maxAge']
+  }).then(function(res) {
+    console.log(res)
+      res.update(
+          {
+            name: serviceData.name,
+            cost: serviceData.cost,
+            minAge: serviceData.minAge,
+            maxAge: serviceData.maxAge
+          }
+      ).then(function (){
+          }
+      );
+  }).catch(function(error){
+    console.log("error");
+    console.log(error)
+  });
+  res.redirect("/admin/servicios");
+};

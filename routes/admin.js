@@ -27,6 +27,8 @@ router.get('/serviciosagregar', function(req,res,next){
   res.render('serviciosa');
 });
 
+router.get('/modificar-serv/:id', servController.findServToEdit);
+
 //CITAS
 
 router.get('/schedule', appointmentController.showCalendar);
@@ -75,6 +77,11 @@ router.post('/add-child',
 router.post('/add-service',
   servController.addService
 );
+
+router.post('/modify-service',
+    servController.modifyService
+);
+
 
 router.post('/modify-child',
     childController.modifyChild

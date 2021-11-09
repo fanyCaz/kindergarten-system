@@ -19,7 +19,9 @@ block content
             .datos
               p Rango de edad para servicio
               p= service.minAge + " - " + service.maxAge + " años"
-              i.far.fa-edit
+              button
+                a(href="http://localhost:3000/admin/modificar-serv/" + service.id)
+                  i.far.fa-edit
               i(class="far fa-trash-alt")
 
 
