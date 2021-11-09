@@ -31,6 +31,28 @@ exports.addService = async(req,res,next) => {
   });
  
   res.redirect('/admin/ninos/');
-  
+};
+
+exports.findServices = async(req,res,next) => {
+  if(!req.isAuthenticated()) {
+    return res.redirect("/admin/login");
+  }
+  // if authenticated it proceeds with normal procedure
+  let services = [];
+  await Servicio.findAll({
+    attributes: ['id',
+      'minAge',
+      'maxAge',
+      'cost',
+      'name']
+  }).then(function(res){
+    services = res;
+  }).catch(function(error){
+    console.log(error)
+  });
+  return res.render('servicios', {
+    services: services
+  });
+
 };
 

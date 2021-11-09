@@ -13,7 +13,7 @@ router.get('/login', function(req,res,next){
     res.render('login');
 });
 
-router.get('/servicios', function(req,res,next){
+router.get('/servicios', servController.findServices, function(req,res,next){
   if(req.isAuthenticated()) return next();
   res.redirect("/admin/login");
 }, function(req,res,next){
