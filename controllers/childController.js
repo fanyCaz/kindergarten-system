@@ -59,13 +59,14 @@ function calculateAge(birthdate){
 exports.findChild = async(req,res,next) => {
   if(!req.isAuthenticated()) {
     return res.redirect("/admin/login");
-  } 
+  }
   // if authenticated it proceeds with normal procedure
   let childId = req.params.id;
   let child;
   await Nino.findOne({
     where: { id: childId },
-    attributes: ['firstName',
+    attributes: ['id',
+                  'firstName',
                   'lastName',
                   'emergencyNumber',
                   'ageYears',
@@ -214,6 +215,24 @@ exports.modifyChild = async(req,res,next) =>{
   res.redirect("/admin/ninos");
 };
 
+exports.cancelarChild = async(req,res,next) =>{
+  let childId = parseInt(req.body.childId);
+  let nino;
+  await Nino.findOne({
+    where: { id: childId }
+  }).then(function(res) {
+    console.log(res)
+    res.update(
+      {
+        status: 0
+      }
+    );
+  }).catch(function(error){
+    console.log("error");
+    console.log(error)
+  });
+  res.redirect("/admin/ninos");
+};
 
 exports.addCotization = async(req,res,next) => {
   let cotizationBody = req.body;

@@ -1,0 +1,7 @@
+div#cancelModal.modal.hidden
+  div.grid.justify-content-center.w-96.bg-pink-100.p-12.rounded-md.m-auto
+    p.text-xl.text-green-500= "Cancelar Inscripcion"
+    form(action="/admin/cancel-child" method="POST")
+      p.text-lg= "¿Desea cancelar inscripcion?"
+      input#childId(name='childId', class="hidden")
+      button.bg-green-500.text-lg.p-2.my-2.rounded-md.text-white= (type='submit', value="Cancelar Inscripcion")

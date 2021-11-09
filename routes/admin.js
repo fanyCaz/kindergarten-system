@@ -80,6 +80,10 @@ router.post('/modify-child',
     childController.modifyChild
 );
 
+router.post('/cancel-child',
+    childController.cancelarChild
+);
+
 router.post('/add-child-cotization/',
   childController.addCotization
 );
