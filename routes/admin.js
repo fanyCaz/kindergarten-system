@@ -13,7 +13,7 @@ router.get('/login', function(req,res,next){
     res.render('login');
 });
 
-router.get('/servicios', function(req,res,next){
+router.get('/servicios', servController.findServices, function(req,res,next){
   if(req.isAuthenticated()) return next();
   res.redirect("/admin/login");
 }, function(req,res,next){
@@ -26,6 +26,10 @@ router.get('/serviciosagregar', function(req,res,next){
 },function(req,res,next){
   res.render('serviciosa');
 });
+
+router.get('/modificar-serv/:id', servController.findServToEdit);
+
+router.get('/borrar-serv/:id', servController.findServToDelete);
 
 //CITAS
 
@@ -75,6 +79,15 @@ router.post('/add-child',
 router.post('/add-service',
   servController.addService
 );
+
+router.post('/modify-service',
+    servController.modifyService
+);
+
+router.post('/delete-service',
+    servController.deleteService
+);
+
 
 router.post('/modify-child',
     childController.modifyChild

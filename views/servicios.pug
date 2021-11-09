@@ -9,14 +9,21 @@ block content
         p.m-3.text-3xl.text-green-400="Servicios"
         button.agregab: a(href="http://localhost:3000/admin/serviciosagregar") Agregar servicio
       div.grid.grid-cols-1.gap-4.justify-items-stretch.m-10.text-lg
-        each box in [1,2,3]
+        each service in services
           .cajaazul 
             .nombres 
-              p Nombre de servicio
-              p Costos
+              p Nombre de servicio:
+              p= service.name
+              p Costos:
+              p= service.cost
             .datos
               p Rango de edad para servicio
-              i.far.fa-edit
-              i(class="far fa-trash-alt")
+              p= service.minAge + " - " + service.maxAge + " años"
+              button
+                a(href="http://localhost:3000/admin/modificar-serv/" + service.id)
+                  i.far.fa-edit
+              button#modal
+                a(href="http://localhost:3000/admin/borrar-serv/" + service.id)
+                  i.far.fa-trash-alt
 
 

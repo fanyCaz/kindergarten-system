@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    include partials/admin_header
+    div.grid.grid-cols-5
+        include side_menu
+        div.col-span-4.h-full
+            div.grid.grid-cols-2.m-10
+                p.m-3.text-3xl.text-green-400= "Modificar a un servicio"
+            form(action="/admin/modify-service" method="POST")
+                div.grid.grid-rows-2.justify-items-center.text-lg
+                    div.grid.grid-cols-2.gap-x-10
+                        div
+                            p Nombre
+                            input.my-2.border-2.border-black.rounded-md(name="name", value=service.name)
+                            p= "Costo"
+                            input.my-2.border-2.border-black.rounded-md.w-full(name="cost", value=service.cost)
+                            p= "Edad mínima para el servicio"
+                            input.my-2.border-2.border-black.rounded-md(name="minAge", value=service.minAge)
+                            p= "Edad máxima para el servicio"
+                            input.my-2.border-2.border-black.rounded-md(name="maxAge", value=service.maxAge)
+                        div
+                            input(type="hidden", name="id", readonly="readonly", value=service.id)
+                    input.mt-2.py-2.px-12.rounded-full.bg-green-500.text-white.h-12(type='submit' value='Modificar servicio')
+
