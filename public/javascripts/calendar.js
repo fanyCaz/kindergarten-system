@@ -31,12 +31,19 @@ document.addEventListener('DOMContentLoaded', function(){
 
   calendar.on('dateClick', function(info){
     let dateSelected = new Date(info.dateStr);
+    console.log(info.dateStr)
+    let hours = dateSelected.getHours() < 10 ? "0" + dateSelected.getHours() : dateSelected.getHours();
     let minutes = dateSelected.getMinutes() < 10 ? dateSelected.getMinutes() + "0" : dateSelected.getMinutes();
+    let day = dateSelected.getDate() < 10 ? "0" + dateSelected.getDate() : dateSelected.getDate();
+    let month = (dateSelected.getMonth() + 1) < 10 ? "0" + (dateSelected.getMonth() + 1) : dateSelected.getMonth();
+    let year = dateSelected.getFullYear();
     let modal = document.getElementById('eventModal');
     let startHour = modal.querySelector('#start_hour');
-    startHour.value = dateSelected.getHours() + ":" + minutes;
+    startHour.value = hours + ":" + minutes;
     let endHour = modal.querySelector('#end_hour');
-    endHour.value = dateSelected.getHours() + ":" + (parseInt(minutes) + 30);
+    endHour.value = hours + ":" + (parseInt(minutes) + 29);
+    //let dayInput = modal.querySelector('#day').value
+    modal.querySelector('#day').value = year + "-" + month + "-" + day;
     modal.style.display = "block";
     //remove intrusive label of calendar
     document.getElementsByClassName('fc-timegrid-axis-cushion fc-scrollgrid-shrink-cushion fc-scrollgrid-sync-inner')[0].style.display = "none";

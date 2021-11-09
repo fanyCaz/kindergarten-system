@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Cita.init({
-    beginHour: DataTypes.DECIMAL,
-    endHour: DataTypes.DECIMAL,
-    day: DataTypes.DATE,
+    beginHour: DataTypes.STRING,
+    endHour: DataTypes.STRING,
+    day: DataTypes.STRING,
     available: DataTypes.BOOLEAN
   }, {
     sequelize,
