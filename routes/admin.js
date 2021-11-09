@@ -48,8 +48,6 @@ router.get('/ninos', childController.findChildren);
 
 router.get('/modificar-nino/:id', childController.findChildToEdit);
 
-router.get('/cancelar-nino/:id', childController.findChildToCancelar);
-
 router.get('/info-nino/:id', childController.findChild);
 
 router.get('/enroll-child', function(req,res,next){
