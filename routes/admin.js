@@ -29,6 +29,8 @@ router.get('/serviciosagregar', function(req,res,next){
 
 router.get('/modificar-serv/:id', servController.findServToEdit);
 
+router.get('/borrar-serv/:id', servController.findServToDelete);
+
 //CITAS
 
 router.get('/schedule', appointmentController.showCalendar);
@@ -80,6 +82,10 @@ router.post('/add-service',
 
 router.post('/modify-service',
     servController.modifyService
+);
+
+router.post('/delete-service',
+    servController.deleteService
 );
 
 

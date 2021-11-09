@@ -98,3 +98,39 @@ exports.modifyService = async(req,res,next) =>{
   });
   res.redirect("/admin/servicios");
 };
+
+exports.findServToDelete = async(req,res,next) => {
+  let servId = req.params.id;
+  let service;
+  await Servicio.findOne({
+    where: { id: servId },
+    attributes: ['name','cost','minAge','maxAge', 'id']
+  }).then(function(res) {
+    console.log(res)
+    service = res;
+  }).catch(function(error){
+    console.log("error");
+    console.log(error)
+  });
+  res.render('borrar-serv',{ service: service });
+};
+
+exports.deleteService = async(req, res, next) =>{
+  console.log("entre a BORRAR SERVICIO")
+  let serviceData = req.body;
+  console.log(serviceData);
+  let servId = req.body.id
+
+  Servicio.destroy({
+    where: {
+      id: servId
+    }
+  }).then(function (rowDeleted) {
+    if (rowDeleted === 1) {
+      console.log("Borrado exitosamente");
+    }
+  },function (err){
+    console.log(err);
+  })
+  res.redirect("/admin/servicios");
+};
