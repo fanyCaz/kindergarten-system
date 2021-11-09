@@ -29,12 +29,7 @@ router.get('/serviciosagregar', function(req,res,next){
 
 //CITAS
 
-router.get('/schedule', function(req,res,next){
-  //if(req.isAuthenticated()) return next();
-  //res.redirect("/admin/login");
-//}, function(req,res,next){
-  res.render('schedule');
-});
+router.get('/schedule', appointmentController.showCalendar);
 
 router.get('/schedule/unique', function(req,res,next){
   if(req.isAuthenticated()) return next();

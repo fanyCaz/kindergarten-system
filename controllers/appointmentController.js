@@ -1,6 +1,15 @@
 const Sequelize = require('sequelize');
 const Cita = require('../models').Cita;
 
+exports.showCalendar = async(req,res,next) => {
+  if(!req.isAuthenticated()) {
+   return res.redirect("/admin/login");
+  }
+  appointments = await getAppointments();
+  res.render('schedule',
+    { appointments: appointments });
+}
+
 exports.addAppointment = async(req,res,next) => {
   // Req -> Request
   console.log(req.body);
@@ -20,3 +29,20 @@ exports.addAppointment = async(req,res,next) => {
   });
   res.redirect('/admin/schedule/');
 };
+
+async function getAppointments(){
+  let appointments = [];
+  await Cita.findAll({
+    attributes: ['id',
+                'beginHour',
+                'endHour',
+                'day',
+                'available',
+                'ClienteId']
+    }).then(function(res){
+      appointments = res;
+    }).catch(function(error){
+      console.log(error)
+    });
+  return appointments;
+}
