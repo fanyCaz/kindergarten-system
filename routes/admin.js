@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const childController = require('../controllers/childController');
 const servController = require('../controllers/servController');
+const appointmentController = require('../controllers/appointmentController');
 var axios = require('axios')
 
 router.get('/', function(req,res,next){
@@ -26,12 +27,9 @@ router.get('/serviciosagregar', function(req,res,next){
   res.render('serviciosa');
 });
 
-router.get('/schedule', function(req,res,next){
-  if(req.isAuthenticated()) return next();
-  res.redirect("/admin/login");
-}, function(req,res,next){
-  res.render('schedule');
-});
+//CITAS
+
+router.get('/schedule', appointmentController.showCalendar);
 
 router.get('/schedule/unique', function(req,res,next){
   if(req.isAuthenticated()) return next();
@@ -40,9 +38,9 @@ router.get('/schedule/unique', function(req,res,next){
   res.render('info_appointment');
 });
 
-//NIÑOS
+router.post('/add-appointment', appointmentController.addAppointment);
 
-//no auth
+//NIÑOS
 
 router.get('/ninos', childController.findChildren);
 
