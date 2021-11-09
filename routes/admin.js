@@ -84,7 +84,7 @@ router.post('/modify-child',
     childController.modifyChild
 );
 
-router.post('/cancelar-child',
+router.post('/cancel-child',
     childController.cancelarChild
 );
 

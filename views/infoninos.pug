@@ -10,7 +10,8 @@ block content
         button.agregab: a(href="http://localhost:3000/admin/ninos") Volver a niños
       div.grid.grid-cols-1.gap-4.justify-items-stretch.m-10.text-lg
         .cajaazul.grid.grid-cols-2
-          .nombres 
+          .nombres
+            input#childid.hidden(value=child.id)
             p Nombre:
             p= child.firstName + " " + child.lastName
             br
@@ -26,7 +27,7 @@ block content
             br
             br
             br 
-            button.mt-2.py-2.px-12.rounded-full.bg-red-500.text-white: a(href="#",class="text-white no-underline") Cancelar Inscripcion X  
+          #cancelChild.button.mt-2.py-2.px-12.rounded-full.bg-red-500.text-white: a(href="#",class="text-white no-underline") Cancelar Inscripcion X  
             script(src='/javascripts/cancelar.js')
             
             include partials/cancelar_admin

@@ -59,13 +59,14 @@ function calculateAge(birthdate){
 exports.findChild = async(req,res,next) => {
   if(!req.isAuthenticated()) {
     return res.redirect("/admin/login");
-  } 
+  }
   // if authenticated it proceeds with normal procedure
   let childId = req.params.id;
   let child;
   await Nino.findOne({
     where: { id: childId },
-    attributes: ['firstName',
+    attributes: ['id',
+                  'firstName',
                   'lastName',
                   'emergencyNumber',
                   'ageYears',
@@ -234,41 +235,17 @@ exports.modifyChild = async(req,res,next) =>{
 };
 
 exports.cancelarChild = async(req,res,next) =>{
-  console.log("entre a cancelar")
-  let childData = req.body;
-  if(childData.status === 1){
-    childData.status === 0
-  }
-
-  console.log(childData)
-  let childId = req.body.id
+  let childId = parseInt(req.body.childId);
   let nino;
-  nino = await Nino.findOne({
-    where: { id: childId },
-    attributes: ['firstName','lastName','status','id']
+  await Nino.findOne({
+    where: { id: childId }
   }).then(function(res) {
     console.log(res)
-    if (childData.status === 1){
-      res.update(
-          {
-            firstName: childData.name,
-            lastName: childData.lastname,
-            status: childData.status
-          }
-      ).then(function (){
-          }
-      );
-    }else{
-      res.update(
-          {
-            firstName: childData.name,
-            lastName: childData.lastname,
-          }
-      ).then(function (){
-          }
-      );
-    }
-
+    res.update(
+      {
+        status: 0
+      }
+    );
   }).catch(function(error){
     console.log("error");
     console.log(error)
