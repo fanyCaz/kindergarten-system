@@ -13,24 +13,6 @@ router.get('/login', function(req,res,next){
     res.render('login');
 });
 
-router.get('/servicios', servController.findServices, function(req,res,next){
-  if(req.isAuthenticated()) return next();
-  res.redirect("/admin/login");
-}, function(req,res,next){
-  res.render('servicios');
-});
-
-router.get('/serviciosagregar', function(req,res,next){
-  if(req.isAuthenticated()) return next();
-  res.redirect("/admin/login");
-},function(req,res,next){
-  res.render('serviciosa');
-});
-
-router.get('/modificar-serv/:id', servController.findServToEdit);
-
-router.get('/borrar-serv/:id', servController.findServToDelete);
-
 //CITAS
 
 router.get('/schedule', appointmentController.showCalendar);
@@ -75,6 +57,19 @@ router.post('/add-child',
   childController.addChild
 );
 
+router.post('/modify-child',
+    childController.modifyChild
+);
+
+router.post('/cancel-child',
+    childController.cancelarChild
+);
+
+router.post('/add-child-cotization/',
+  childController.addCotization
+);
+
+//SERVICIOS
 
 router.post('/add-service',
   servController.addService
@@ -88,17 +83,17 @@ router.post('/delete-service',
     servController.deleteService
 );
 
+router.get('/servicios', servController.findServices);
 
-router.post('/modify-child',
-    childController.modifyChild
-);
+router.get('/serviciosagregar', function(req,res,next){
+  if(req.isAuthenticated()) return next();
+  res.redirect("/admin/login");
+},function(req,res,next){
+  res.render('serviciosa');
+});
 
-router.post('/cancel-child',
-    childController.cancelarChild
-);
+router.get('/modificar-serv/:id', servController.findServToEdit);
 
-router.post('/add-child-cotization/',
-  childController.addCotization
-);
+router.get('/borrar-serv/:id', servController.findServToDelete);
 
 module.exports = router;
