@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const Nino = require('../models').Nino;
+const ServiciosNino= require('../models').ServiciosNino
 
 function calculateAge(birthdate){
   var transformedAge = birthdate.split('-');
@@ -102,6 +103,7 @@ exports.findChildToEdit = async(req,res,next) => {
   res.render('modificar-nino',{ child: child });
 };
 
+
 exports.findChildren = async(req,res,next) => {
   if(!req.isAuthenticated()) {
    return res.redirect("/admin/login");
@@ -150,6 +152,8 @@ exports.addChild = async(req,res,next) => {
     ageYears: age.yearAge,
     status: 1
   })
+ 
+
   .then(function(res){
     addedNino = res;
     statusMsg = "El niño se ha guardado correctamente";
@@ -162,6 +166,8 @@ exports.addChild = async(req,res,next) => {
   //Agregar a tabla serviciosnino
   res.redirect('/admin/final-pricing/'+addedNino.id);
 };
+
+
 
 exports.modifyChild = async(req,res,next) =>{
   console.log("entre a MODIFY")
