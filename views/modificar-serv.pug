@@ -9,17 +9,15 @@ block content
                 p.m-3.text-3xl.text-green-400= "Modificar a un servicio"
             form(action="/admin/modify-service" method="POST")
                 div.grid.grid-rows-2.justify-items-center.text-lg
-                    div.grid.grid-cols-2.gap-x-10
-                        div
-                            p Nombre
-                            input.my-2.border-2.border-black.rounded-md(name="name", value=service.name)
-                            p= "Costo"
-                            input.my-2.border-2.border-black.rounded-md.w-full(name="cost", value=service.cost)
-                            p= "Edad mínima para el servicio"
-                            input.my-2.border-2.border-black.rounded-md(name="minAge", value=service.minAge)
-                            p= "Edad máxima para el servicio"
-                            input.my-2.border-2.border-black.rounded-md(name="maxAge", value=service.maxAge)
-                        div
-                            input(type="hidden", name="id", readonly="readonly", value=service.id)
+                    div.grid.gap-x-10
+                        p Nombre
+                        input.my-2.border-2.border-black.rounded-md(name="name", value=service.name)
+                        p= "Costo"
+                        input.my-2.border-2.border-black.rounded-md.w-full(name="cost", value=service.cost)
+                        p= "Edad mínima para el servicio"
+                        input.my-2.border-2.border-black.rounded-md(name="minAge", value=service.minAge)
+                        p= "Edad máxima para el servicio"
+                        input.my-2.border-2.border-black.rounded-md(name="maxAge", value=service.maxAge)
+                        input(type="hidden", name="id", readonly="readonly", value=service.id)
                     input.mt-2.py-2.px-12.rounded-full.bg-green-500.text-white.h-12(type='submit' value='Modificar servicio')
 
