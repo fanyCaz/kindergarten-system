@@ -2,19 +2,10 @@
 
 //CARGAR PÁGINA PRIMERO
 document.addEventListener('DOMContentLoaded', function(){
-
-  const onDeleteClick = (event) => {
-    console.log("entro a evento")
-    console.log(event)
-    console.log(event.target)
-  }
-  //let cancelbtn = document.getElementById('cancelChild');
+  //Seleccionar todos los botones de eliminar
   let deleteBtns = [...document.getElementsByClassName('js-delete-service')]
   let deleteModal = document.getElementById('deleteServiceModal');
   deleteBtns.forEach(btn => btn.addEventListener('click', function(){
-      console.log(this);
-      console.log(this.dataset.service)
-      var deleteServiceModal = document.getElementById('deleteServiceModal');
       let id = this.dataset.service;
       deleteModal.querySelector('#serviceId').value = id;
       deleteModal.style.display = "block";
