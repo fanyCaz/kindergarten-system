@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var calendarEl = document.getElementById('calendar');
   let apps = JSON.parse(document.getElementById('appointments').dataset.apps);
   let events = [];
-  apps.forEach(a => events.push({ title: (a.ClienteId != null) ? "Ocupado" : "Disponible", start: a.day + "T" + a.beginHour, end: a.day + "T" + a.endHour }));
+  apps.forEach(a => events.push({ title: "Disponible", start: a.day + "T" + a.beginHour, end: a.day + "T" + a.endHour }));
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'timeGridWeek',
     locale: 'es',
