@@ -1,0 +1,7 @@
+div#deleteServiceModal.modal.hidden
+  div.grid.justify-content-center.w-96.bg-pink-100.p-12.rounded-md.m-auto
+    p.text-xl.text-green-500 Eliminar Servicio
+    form(action="/admin/delete-service" method="POST", class="grid justify-items-center")
+      p.text-lg ¿Estás seguro de eliminar este servicio?
+      input#serviceId(name='serviceId', class="hidden")
+      button.bg-red-500.text-lg.p-2.my-2.rounded-md.text-white= (type='submit', value="Eliminar")
