@@ -8,4 +8,6 @@ block content
       p Agenda una cita con nosotros
     div.grid.place-items-stretch.m-10
       div#calendar
+
+    div#appointments.hidden&attributes({'data-apps': appointments})
     script(src='/javascripts/client_calendar.js')

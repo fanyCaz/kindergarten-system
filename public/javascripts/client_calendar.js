@@ -2,6 +2,9 @@
 
 document.addEventListener('DOMContentLoaded', function(){
   var calendarEl = document.getElementById('calendar');
+  let apps = JSON.parse(document.getElementById('appointments').dataset.apps);
+  let events = [];
+  apps.forEach(a => events.push({ title: "Disponible", start: a.day + "T" + a.beginHour, end: a.day + "T" + a.endHour }));
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'timeGridWeek',
     locale: 'es',
@@ -19,13 +22,7 @@ document.addEventListener('DOMContentLoaded', function(){
     buttonText: {
       today: 'hoy'
     },
-    events: [
-      {
-        title: "Disponible",
-        start: "2021-11-06",
-        end: "2021-11-06"
-      }
-    ]
+    events: events
   });
   calendar.render();
 

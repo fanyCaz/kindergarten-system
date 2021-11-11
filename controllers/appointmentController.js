@@ -30,6 +30,11 @@ exports.addAppointment = async(req,res,next) => {
   res.redirect('/admin/schedule/');
 };
 
+exports.getPublicAppointments = async(req,res,next) => {
+  let appointments = await getAvailableAppointments();
+  res.render('client_calendar', {appointments: appointments});
+}
+
 async function getAppointments(){
   let appointments = [];
   await Cita.findAll({
@@ -39,6 +44,24 @@ async function getAppointments(){
                 'day',
                 'available',
                 'ClienteId']
+    }).then(function(res){
+      appointments = res;
+    }).catch(function(error){
+      console.log(error)
+    });
+  return appointments;
+}
+
+async function getAvailableAppointments() {
+  let appointments = [];
+  await Cita.findAll({
+      where: { available: 1 },
+      attributes: [
+                'id',
+                'beginHour',
+                'endHour',
+                'day',
+              ]
     }).then(function(res){
       appointments = res;
     }).catch(function(error){
