@@ -119,7 +119,7 @@ exports.deleteService = async(req, res, next) =>{
   console.log("entre a BORRAR SERVICIO")
   let serviceData = req.body;
   console.log(serviceData);
-  let servId = req.body.id
+  let servId = req.body.serviceId;
 
   Servicio.destroy({
     where: {
