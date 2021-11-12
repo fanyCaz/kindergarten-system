@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   ServiciosNino.init({
     days: DataTypes.STRING,
-    hours: DataTypes.INTEGER
+    hours: DataTypes.INTEGER,
+    dailyHours: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'ServiciosNino',

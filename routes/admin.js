@@ -34,17 +34,7 @@ router.get('/modificar-nino/:id', childController.findChildToEdit);
 
 router.get('/info-nino/:id', childController.findChild);
 
-router.get('/enroll-child', function(req,res,next){
-  if(req.isAuthenticated()) return next();
-  res.redirect("/admin/login");
-}, function(req,res,next){
-  let servicesOptions = [1,2,3,4,5];
-  let todaysDate = new Date;
-  res.render('form_enroll_child', {
-    servicesOptions: servicesOptions,
-    todaysDate: todaysDate
-  });
-});
+router.get('/enroll-child', childController.enrollChild);
 
 router.get('/final-pricing/:id', function(req,res,next){
   if(req.isAuthenticated()) return next();

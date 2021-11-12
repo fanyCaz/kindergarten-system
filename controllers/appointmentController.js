@@ -6,6 +6,7 @@ exports.showCalendar = async(req,res,next) => {
    return res.redirect("/admin/login");
   }
   appointments = await getAppointments();
+  console.log(appointments)
   res.render('schedule',
     { appointments: appointments });
 }
