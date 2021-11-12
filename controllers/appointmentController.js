@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const Cita = require('../models').Cita;
+const Cliente = require('../models').Cliente;
 
 exports.showCalendar = async(req,res,next) => {
   if(!req.isAuthenticated()) {
@@ -31,6 +32,32 @@ exports.addAppointment = async(req,res,next) => {
   res.redirect('/admin/schedule/');
 };
 
+exports.showClient = async(req,res,next) => {
+  let appointmentId = req.params.appointment_id;
+  let client ;
+  let appointment ;
+  let 
+  let appointment = await Cita.findOne({
+    where: { id: appointmentId },
+    attributes: ['beginHour', 'endHour', 'day', 'ClienteId']
+  }).catch(function(error){
+    console.log("Error al traer cita");
+    console.log(error);
+  });
+  client = await Cliente.findOne({
+    where: { id: appointment.ClienteId },
+    attributes: ['firstName','lastName','sector','phone','meansAware']
+  }).catch(function(error) {
+    console.log("Error")
+    console.log(error)
+  });
+  nino = await Nino.findOne({
+    
+  })
+  console.log(client)
+  res.render('info_appointment', { client: client });
+}
+
 exports.getPublicAppointments = async(req,res,next) => {
   let appointments = await getAvailableAppointments();
   res.render('client_calendar', {appointments: appointments});
@@ -43,8 +70,7 @@ async function getAppointments(){
                 'beginHour',
                 'endHour',
                 'day',
-                'available',
-                'ClienteId']
+                'available']
     }).then(function(res){
       appointments = res;
     }).catch(function(error){

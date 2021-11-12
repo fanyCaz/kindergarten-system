@@ -6,14 +6,16 @@ block content
     include side_menu
     div.col-span-4
       div.grid.grid-cols-2.m-10
-        p.m-3.text-3xl.text-green-400= "Información de la cita"
+        p.m-3.text-3xl.text-green-400 Información de la Cliente
         button.agregab: a(href="http://localhost:3000/admin/schedule") Volver al calendario
       div.grid.grid-cols-2.justify-items-stretch.bg-red-200.text-grey-500.p-10.rounded-md.m-10.text-xl
         div
-          p= "Nombre del cliente"
-          p= "Horario asignado"
-          p= "Número telefónico"
-          p= "Nombre del niño(a)"
+          p Nombre del cliente
+          p= client.firstName + " " client.lastName
+          p Horario asignado
+          p= client
+          p Número telefónico
+          p Nombre del niño(a)
         div
           p= "Información adicional"
           p= "Donde escuchó de la guardería"

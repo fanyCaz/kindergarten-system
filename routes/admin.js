@@ -17,12 +17,7 @@ router.get('/login', function(req,res,next){
 
 router.get('/schedule', appointmentController.showCalendar);
 
-router.get('/schedule/unique', function(req,res,next){
-  if(req.isAuthenticated()) return next();
-  res.redirect("/admin/login");
-}, function(req,res,next){
-  res.render('info_appointment');
-});
+router.get('/schedule/:id_cita/client/', appointmentController.showClient );
 
 router.post('/add-appointment', appointmentController.addAppointment);
 

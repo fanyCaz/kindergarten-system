@@ -26,7 +26,9 @@ document.addEventListener('DOMContentLoaded', function(){
   });
   calendar.render();
 
-  calendar.on('dateClick', function(info){
-    console.log("redirect to form");
+  calendar.on('eventClick', function(info){
+    console.log(info);
+    console.log(info.event)
   });
+
 });
