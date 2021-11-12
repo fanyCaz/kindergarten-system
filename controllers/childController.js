@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const Nino = require('../models').Nino;
 const ServiciosNino= require('../models').ServiciosNino
+const Servicio= require('../models').Servicio
 
 function calculateAge(birthdate){
   var transformedAge = birthdate.split('-');
@@ -101,7 +102,15 @@ exports.findChildToEdit = async(req,res,next) => {
     console.log("error");
     console.log(error)
   });
-  res.render('modificar-nino',{ child: child });
+  let serviceChild;
+  await ServiciosNino.findOne({
+    attributes: ['dailyHours','days']
+  }).then(function(res){
+    serviceChild= res;
+  }).catch(function(error){
+    console.log(error)
+  });
+  res.render('modificar-nino',{ child: child, serviceChild:serviceChild});
 };
 
 
@@ -153,8 +162,6 @@ exports.addChild = async(req,res,next) => {
     ageYears: age.yearAge,
     status: 1
   })
- 
-
   .then(function(res){
     addedNino = res;
     statusMsg = "El niño se ha guardado correctamente";
@@ -165,8 +172,35 @@ exports.addChild = async(req,res,next) => {
     statusMsg = "Ha ocurrido un error, porfavor,intenta de nuevo";
   });
   //Agregar a tabla serviciosnino
+  await ServiciosNino.create({
+    NinoId:addedNino.id,
+    ServicioId:childData.service,
+    dailyHours: childData.dailyHours,
+    days:childData.days
+
+  })
+ 
   res.redirect('/admin/final-pricing/'+addedNino.id);
 };
+
+exports.enrollChild= async(req,res,next)=>{
+  let servicesOptions = [1,2,3,4,5];
+  let todaysDate = new Date;
+  let daysOptions=[1,2,3,4,5]
+  await Servicio.findAll({
+    attributes: ['name',
+  'id']
+  }).then(function(res){
+    servicesOptions = res;
+  }).catch(function(error){
+    console.log(error)
+  });
+  res.render('form_enroll_child', {
+    servicesOptions: servicesOptions,
+    todaysDate: todaysDate,
+    daysOptions:daysOptions
+  });
+}
 
 
 
