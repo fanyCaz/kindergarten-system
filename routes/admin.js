@@ -31,12 +31,7 @@ router.get('/info-nino/:id', childController.findChild);
 
 router.get('/enroll-child/:id_client', childController.enrollChild);
 
-router.get('/final-pricing/:id', function(req,res,next){
-  if(req.isAuthenticated()) return next();
-  res.redirect("/admin/login");
-}, function(req,res,next){
-  res.render('form_pricing_child');
-});
+router.get('/final-pricing/:id_child', childController.pricing);
 
 router.post('/add-child',
   childController.addChild
