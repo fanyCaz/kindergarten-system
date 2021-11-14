@@ -5,18 +5,28 @@ block content
   div.grid.grid-cols-5
     include side_menu
     div.col-span-4.h-full
-      div.grid.grid-cols-2.m-10.encabezado
-        p.m-3.text-3xl.text-green-400="Servicios"
+      div.grid.grid-cols-2.m-10
+        p.m-3.text-3xl.text-green-400 Servicios
         button.agregab: a(href="http://localhost:3000/admin/serviciosagregar") Agregar servicio
       div.grid.grid-cols-1.gap-4.justify-items-stretch.m-10.text-lg
-        each box in [1,2,3]
-          .cajaazul 
+        each service in services
+          .cajaazul.grid.grid-cols-2
             .nombres 
-              p Nombre de servicio
-              p Costos
+              p Nombre de servicio:
+              p= service.name
+              p Costos:
+              p= service.cost
             .datos
               p Rango de edad para servicio
-              i.far.fa-edit
-              i(class="far fa-trash-alt")
+              p= service.minAge + " - " + service.maxAge + " años"
+              button
+                a(href="http://localhost:3000/admin/modificar-serv/" + service.id)
+                  i.far.fa-edit
+              button.js-delete-service&attributes({'data-service': service.id})
+                i.far.fa-trash-alt
+        else
+          p No hay servicios agregados
 
+      include partials/delete_service
+      script(src='/javascripts/delete_service.js')
 

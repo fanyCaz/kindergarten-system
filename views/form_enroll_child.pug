@@ -27,12 +27,15 @@ block content
               p Servicio
               select.my-2.border-2.border-black.rounded-md.w-full(name="service")
                 each opt in servicesOptions
-                  option(value=opt)= opt
+                  option(value=opt.id)= opt.name
               p Días de servicio
-              input.my-2.border-2.border-black.rounded-md(name="days")
+              select.my-2.border-2.border-black.rounded-md.w-full(name="days")
+                each opt in daysOptions
+                  option(value=opt)= opt
               p= "Horas diaras"
               input.my-2.border-2.border-black.rounded-md(name="dailyHours")
               p= "Fecha de ingreso"
               input.my-2.border-2.border-black.rounded-md.w-full(name="entryDate", type="date", min=todaysDate)
+              input.hidden(name="clientId", value=clientId)
           input.mt-2.py-2.px-12.rounded-full.bg-green-500.text-white.h-12(type='submit' value='Ir a cotización')
 
