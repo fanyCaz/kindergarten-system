@@ -1,20 +1,19 @@
 const Sequelize = require('sequelize');
 const Cita = require('../models').Cita;
 const Cliente = require('../models').Cliente;
+const Nino = require('../models').Nino;
 
 exports.showCalendar = async(req,res,next) => {
   if(!req.isAuthenticated()) {
    return res.redirect("/admin/login");
   }
   appointments = await getAppointments();
-  console.log(appointments)
   res.render('schedule',
     { appointments: appointments });
 }
 
 exports.addAppointment = async(req,res,next) => {
   // Req -> Request
-  console.log(req.body);
   let appointmentData = req.body;
   await Cita.create({
     day: appointmentData.day,
@@ -33,11 +32,11 @@ exports.addAppointment = async(req,res,next) => {
 };
 
 exports.showClient = async(req,res,next) => {
-  let appointmentId = req.params.appointment_id;
+  let appointmentId = req.params.id_appointment;
   let client ;
   let appointment ;
-  let 
-  let appointment = await Cita.findOne({
+  let child ;
+  appointment = await Cita.findOne({
     where: { id: appointmentId },
     attributes: ['beginHour', 'endHour', 'day', 'ClienteId']
   }).catch(function(error){
@@ -46,16 +45,23 @@ exports.showClient = async(req,res,next) => {
   });
   client = await Cliente.findOne({
     where: { id: appointment.ClienteId },
-    attributes: ['firstName','lastName','sector','phone','meansAware']
+    attributes: ['id','firstName','lastName','sector','phone','meansAware']
   }).catch(function(error) {
     console.log("Error")
     console.log(error)
   });
-  nino = await Nino.findOne({
-    
-  })
-  console.log(client)
-  res.render('info_appointment', { client: client });
+  child = await Nino.findOne({
+    where: { ClienteId: client.id },
+    attributes: ['firstName','lastName','ageYears']
+  }).catch(function(error){
+    console.log("Error en nino");
+    console.log(error);
+  });
+  res.render('info_appointment',
+              { client: client,
+                appointment: appointment,
+                child: child
+              });
 }
 
 exports.getPublicAppointments = async(req,res,next) => {
@@ -70,7 +76,8 @@ async function getAppointments(){
                 'beginHour',
                 'endHour',
                 'day',
-                'available']
+                'available',
+                'ClienteId']
     }).then(function(res){
       appointments = res;
     }).catch(function(error){

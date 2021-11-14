@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function(){
                                   title: (a.ClienteId != null) ? "Ocupado" : "Disponible",
                                   start: a.day + "T" + a.beginHour,
                                   end: a.day + "T" + a.endHour,
-                                  id: a.ClienteId ? a.ClienteId : ""
+                                  id: a.ClienteId ? a.id : ""
                                 }
                               ));
   var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -51,9 +51,9 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   calendar.on('eventClick', function(info){
-    let clientId = info.event.id;
-    if(clientId != ""){
-      window.location = "http://localhost:3000/admin/schedule/client/" + clientId;
+    let appointmentId = info.event.id;
+    if(appointmentId != ""){
+      window.location = "http://localhost:3000/admin/schedule/"+ appointmentId +"/client/";
     }
   });
 });

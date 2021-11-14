@@ -184,6 +184,7 @@ exports.addChild = async(req,res,next) => {
 };
 
 exports.enrollChild= async(req,res,next)=>{
+  let client_id = req.params.id_client ? req.params.id_client : "";
   let servicesOptions = [1,2,3,4,5];
   let todaysDate = new Date;
   let daysOptions=[1,2,3,4,5]
@@ -198,7 +199,8 @@ exports.enrollChild= async(req,res,next)=>{
   res.render('form_enroll_child', {
     servicesOptions: servicesOptions,
     todaysDate: todaysDate,
-    daysOptions:daysOptions
+    daysOptions:daysOptions,
+    clientId: client_id
   });
 }
 
