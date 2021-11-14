@@ -17,12 +17,7 @@ router.get('/login', function(req,res,next){
 
 router.get('/schedule', appointmentController.showCalendar);
 
-router.get('/schedule/unique', function(req,res,next){
-  if(req.isAuthenticated()) return next();
-  res.redirect("/admin/login");
-}, function(req,res,next){
-  res.render('info_appointment');
-});
+router.get('/schedule/:id_appointment/client/', appointmentController.showClient );
 
 router.post('/add-appointment', appointmentController.addAppointment);
 
@@ -34,7 +29,7 @@ router.get('/modificar-nino/:id', childController.findChildToEdit);
 
 router.get('/info-nino/:id', childController.findChild);
 
-router.get('/enroll-child', childController.enrollChild);
+router.get('/enroll-child/:id_client', childController.enrollChild);
 
 router.get('/final-pricing/:id', function(req,res,next){
   if(req.isAuthenticated()) return next();
