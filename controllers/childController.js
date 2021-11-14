@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
 const Nino = require('../models').Nino;
-const ServiciosNino= require('../models').ServiciosNino
-const Servicio= require('../models').Servicio
+const ServiciosNino= require('../models').ServiciosNino;
+const Servicio= require('../models').Servicio;
+const Cliente = require('../models').Cliente;
 
 function calculateAge(birthdate){
   var transformedAge = birthdate.split('-');
@@ -104,6 +105,7 @@ exports.findChildToEdit = async(req,res,next) => {
   });
   let serviceChild;
   await ServiciosNino.findOne({
+    where: { NinoId: childId },
     attributes: ['dailyHours','days']
   }).then(function(res){
     serviceChild= res;
@@ -159,8 +161,9 @@ exports.addChild = async(req,res,next) => {
     emergencyNumber: childData.emergencyNumber,
     ageDays: age.days,
     ageMonths: age.months,
-    ageYears: age.yearAge,
-    status: 1
+    ageYears: age.years,
+    status: 0,
+    ClienteId: childData.clientId
   })
   .then(function(res){
     addedNino = res;
@@ -177,11 +180,43 @@ exports.addChild = async(req,res,next) => {
     ServicioId:childData.service,
     dailyHours: childData.dailyHours,
     days:childData.days
+  });
+  await Cliente.update({ status: 'active' }, {
+    where: { id: childData.clientId }
+  });
 
-  })
- 
   res.redirect('/admin/final-pricing/'+addedNino.id);
 };
+
+exports.pricing = async(req,res,next)=>{
+  console.log(req.params)
+  let idChild = req.params.id_child;
+  let child ;
+  let serviceChild ;
+  let service ;
+  child = await Nino.findOne({
+    where: { id: idChild },
+    attributes: ['id', 'firstName', 'lastName']
+  }).catch(function(error){
+    console.log("error");
+    console.log(error)
+  });
+  serviceChild = await ServiciosNino.findOne({
+    where: { NinoId: idChild },
+    attributes: ['id','dailyHours','days','ServicioId']
+  }).catch(function(error){
+    console.log(error)
+  });
+  console.log(serviceChild)
+  service = await Servicio.findOne({
+    where: { id: serviceChild.ServicioId },
+    attributes: ['cost', 'name']
+  }).catch(function(error){
+    console.log(error);
+  });
+  res.render('form_pricing_child',
+              { child: child, serviceChild: serviceChild, service: service });
+}
 
 exports.enrollChild= async(req,res,next)=>{
   let client_id = req.params.id_client ? req.params.id_client : "";
@@ -260,22 +295,23 @@ exports.modifyChild = async(req,res,next) =>{
 exports.cancelarChild = async(req,res,next) =>{
   let childId = parseInt(req.body.childId);
   let nino;
-  await Nino.findOne({
-    where: { id: childId }
-  }).then(function(res) {
-    console.log(res)
-    res.update(
-      {
-        status: 0
-      }
-    );
-  }).catch(function(error){
-    console.log("error");
-    console.log(error)
-  });
+  await Nino.update({ status: 0}, {where: { id: childId }});
   res.redirect("/admin/ninos");
 };
 
 exports.addCotization = async(req,res,next) => {
-  let cotizationBody = req.body;
+  let pricingData = req.body;
+  console.log(pricingData);
+  let nino ;
+  nino = await Nino.findOne({
+    where: { id: pricingData.childId },
+    attributes: ['ClienteId']
+  }).catch(function(error) {
+    console.log("Error")
+    console.log(error)
+  });
+  await Cliente.update({ cost: parseFloat(pricingData.finalCost) }, {
+    where: { id: nino.ClienteId }
+  });
+  res.redirect("/admin/ninos");
 };

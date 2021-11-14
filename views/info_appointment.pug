@@ -16,9 +16,11 @@ block content
           p= appointment.day + " a las " + appointment.beginHour
           p.font-bold Número telefónico
           p= client.phone
-          if nino
-            p.font-bold Información del niño registrado
-            p child.firstName + " " + child.lastName
+          if child
+            p.pt-5.font-bold Información del niño registrado
+            p= child.firstName + " " + child.lastName + ", de " + child.ageYears + " años"
+            p.font-bold Costo para el niño
+            p= "$ " + client.cost
           else
             button.mt-4.agregab: a(href="http://localhost:3000/admin/enroll-child/" + client.id) Inscribir a niño
         div
