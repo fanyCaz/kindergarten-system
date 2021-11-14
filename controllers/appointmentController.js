@@ -45,7 +45,7 @@ exports.showClient = async(req,res,next) => {
   });
   client = await Cliente.findOne({
     where: { id: appointment.ClienteId },
-    attributes: ['id','firstName','lastName','sector','phone','meansAware']
+    attributes: ['id','firstName','lastName','sector','phone','meansAware','cost']
   }).catch(function(error) {
     console.log("Error")
     console.log(error)

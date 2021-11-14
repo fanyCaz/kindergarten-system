@@ -300,5 +300,18 @@ exports.cancelarChild = async(req,res,next) =>{
 };
 
 exports.addCotization = async(req,res,next) => {
-  let cotizationBody = req.body;
+  let pricingData = req.body;
+  console.log(pricingData);
+  let nino ;
+  nino = await Nino.findOne({
+    where: { id: pricingData.childId },
+    attributes: ['ClienteId']
+  }).catch(function(error) {
+    console.log("Error")
+    console.log(error)
+  });
+  await Cliente.update({ cost: parseFloat(pricingData.finalCost) }, {
+    where: { id: nino.ClienteId }
+  });
+  res.redirect("/admin/ninos");
 };
