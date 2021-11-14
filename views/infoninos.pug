@@ -12,24 +12,20 @@ block content
         .cajaazul.grid.grid-cols-2
           .nombres
             input#childid.hidden(value=child.id)
-            p Nombre:
+            p.font-bold Nombre:
             p= child.firstName + " " + child.lastName
             br
-            p Alergia:
+            p.font-bold Alergia:
             p= (child.alergiesDescription) ? child.alergiesDescription : "Sin alergias"
             br
-            p Padecimientos: 
-            p=child.chronicConditionDescription
+            p.font-bold Padecimientos: 
+            p= (child.chronicConditionDescription) ? child.chronicConditionDescription : "Sin padecimientos"
           .datos
-            p Numero de emergencia:
+            p.font-bold Numero de emergencia:
             p= child.emergencyNumber
-            br 
-            br
-            br
-            br 
-          #cancelChild.button.mt-2.py-2.px-12.rounded-full.bg-red-500.text-white: a(href="#",class="text-white no-underline") Cancelar Inscripcion X  
-            script(src='/javascripts/cancelar.js')
+        #cancelChild.button.mt-2.py-2.px-2.rounded-full.bg-red-500.text-white.text-center: a(href="#",class="text-white no-underline") Cancelar Inscripcion X
+        script(src='/javascripts/cancelar.js')
             
-            include partials/cancelar_admin
+        include partials/cancelar_admin
 
              
