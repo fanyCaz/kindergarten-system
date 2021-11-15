@@ -38,6 +38,10 @@ router.get('/calendar', appointmentController.getPublicAppointments);
 
 router.get('/contact', function(req, res, next) {
   res.render('contact');
-})
+});
+
+router.get('/photos', function(req, res, next) {
+  res.render('photos');
+});
 
 module.exports = router;
