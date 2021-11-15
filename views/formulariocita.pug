@@ -16,8 +16,10 @@ block content
           input(type="text",  required,name="Nombre").my-2.border-1.border-black.rounded-md
           p.py-2= "APELLIDO"
           input(type="text",  required,name="Apellido").my-2.border-1.border-black.rounded-md
-          p.py-2= "NUMERO"
+          p.py-2= "NÚMERO"
           input(type="text",  required,name="Numero").my-2.border-1.border-black.rounded-md
+          p.py-2= "CORREO ELECTRONICO"
+          input(type="text",required,name="email").my-2.border-1.border-black.rounded-md
           p.py-2= "EDAD"
           input(type="text", required,name="Edad").my-2.border-1.border-black.rounded-md
           p.py-2= "SERVICIO QUE LE INTERESA"
@@ -30,9 +32,8 @@ block content
             option Zona Centro
             option Option 2
             option Option 3
-          p.py-2= "CORREO ELECTRONICO"
-          input(type="text",required,name="email").my-2.border-1.border-black.rounded-md
-          
+          p.py-2= "¿CÓMO SE ENTERO DE NOSOTROS?"
+          input(type="text", required,name="meansAware").my-2.border-1.border-black.rounded-md   
       div.text-xl
         button(type="submit").mt-2.py-5.px-20.rounded-full.bg-green-300.text-white= "ENVIAR"
 

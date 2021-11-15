@@ -12,7 +12,7 @@ exports.sendForm = async(req,res,next) => {
     lastName: clientData.Apellido,
     sector: clientData.zona,
     phone: clientData.Numero,
-    meansAware: null,
+    meansAware: clientData.meansAware,
     cost:null,
     paymentPeriod: null,
     status: "pending",
