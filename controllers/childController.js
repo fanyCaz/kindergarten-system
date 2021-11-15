@@ -162,7 +162,7 @@ exports.addChild = async(req,res,next) => {
     ageDays: age.days,
     ageMonths: age.months,
     ageYears: age.years,
-    status: 0,
+    status: 1,
     ClienteId: childData.clientId
   })
   .then(function(res){
