@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  include partials/client_header
+  div.bg-pink-200
+    div.grid.grid-cols-2.place-content-center.text-green-400.text-center.h-screen.justify-items-center
+      div.grid.place-content-center
+        p.mb-2.text-4xl.little-world-font My Little World
+        img.place-self-center.h-28(src='assets/contact.png')
+      div.grid.grid-cols-1.grid-rows-4.bg-red-100.p-8.text-2xl.rounded-lg.mr-3
+        p.text-3xl.little-world-font Contáctanos
+        p.mt-4.font-bold Teléfono
+        p 8181818181
+        p.mt-4.font-bold Dirección
+        p Av. Ventura Sur #1465, Ventura, C.P. 88715, Reynosa, Tamaulipas
+    div
+      div
+        p.text-4xl.text-center.little-world-font.p-4 Preguntas Frecuentes
+      div.grid.grid-cols-2
+        div
+          p.p-4.font-bold.text-2xl ¿Pueden dar asesorías a nuestros hijos?
+          p.p-4.text-2xl En este momento solo se cuenta con el servicio de guardería
+          p.p-4.font-bold.text-2xl ¿Cuál es el horario que tienen?
+          p.p-4.text-2xl Abrimos de 7am y cerramos a las 7pm, y su hijo puede estar dentro del horario interno que prefiera
+        div
+          div.flex.justify-around
+            img.h-28(src='assets/pencil.png')
+            img.h-28(src='assets/pencil.png')
+          div.flex.justify-center
+            img.place-self-center.h-28(src='assets/pencil.png')
+          div.flex.justify-around
+            img.h-28(src='assets/pencil.png')
+            img.h-28(src='assets/pencil.png')
