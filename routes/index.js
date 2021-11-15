@@ -7,17 +7,6 @@ const clientController = require('../controllers/clientController')
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home' });
 });
-router.get('/servicios', function(req, res, next) {
-  res.render('servicios', {title: 'Servicios'});
-});
-
-router.get('/ninos', function(req, res, next) {
-  res.render('ninos', {title: 'Niños'});
-});
-
-router.get('/infoninos', function(req, res, next) {
-  res.render('infoninos', {title: 'Niños'});
-});
 
 router.get('/formulariocita/:id', function(req, res, next) {
   res.render('formulariocita', {title: ' ',id:req.params.id});
@@ -28,7 +17,6 @@ router.post('/exito', clientController.sendForm);
 router.get('/exito', function(req, res, next) {
   res.render('formulariocita_exito', {title: ' '});
 });
-
 
 router.get('/servicios', function(req, res, next) {
   res.render('servicios', {title: 'Servicios'});
@@ -47,5 +35,13 @@ router.get('/formulariocita', function(req, res, next) {
 });
 
 router.get('/calendar', appointmentController.getPublicAppointments);
+
+router.get('/contact', function(req, res, next) {
+  res.render('contact');
+});
+
+router.get('/photos', function(req, res, next) {
+  res.render('photos');
+});
 
 module.exports = router;

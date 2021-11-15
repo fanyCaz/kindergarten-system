@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  include partials/client_header
+  div.grid.grid-cols-2.place-content-center.bg-pink-200.text-green-400.text-center.h-screen.justify-items-center
+    div.grid.place-content-center
+      p.mb-2.text-4xl.little-world-font My Little World
+      img.place-self-center.h-28(src='assets/photos.png')
+    div.grid.grid-cols-1.mr-3
+      div.grid.grid-cols-2
+        img.p-2.h-56.rounded-md(src='assets/stock_1.jpg')
+        img.p-2.h-56.rounded-md(src='assets/stock_4.jpg')
+      div.grid.grid-cols-2
+        img.h-56.rounded-md(src='assets/stock_2.png')
+        img.h-56.rounded-md(src='assets/stock_3.png')
