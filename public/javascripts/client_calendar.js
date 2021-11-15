@@ -27,7 +27,10 @@ document.addEventListener('DOMContentLoaded', function(){
   calendar.render();
 
   calendar.on('eventClick', function(info){
+
     console.log(info.event.id)
     document.location.href = "http://localhost:3000/formulariocita/"+info.event.id;
+
   });
+
 });

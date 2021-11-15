@@ -6,14 +6,25 @@ block content
     include side_menu
     div.col-span-4
       div.grid.grid-cols-2.m-10
-        p.m-3.text-3xl.text-green-400= "Información de la cita"
+        p.m-3.text-3xl.text-green-400 Información de la Cliente
         button.agregab: a(href="http://localhost:3000/admin/schedule") Volver al calendario
       div.grid.grid-cols-2.justify-items-stretch.bg-red-200.text-grey-500.p-10.rounded-md.m-10.text-xl
         div
-          p= "Nombre del cliente"
-          p= "Horario asignado"
-          p= "Número telefónico"
-          p= "Nombre del niño(a)"
+          p.font-bold Nombre del cliente
+          p= client.firstName + " " + client.lastName
+          p.font-bold Horario asignado
+          p= appointment.day + " a las " + appointment.beginHour
+          p.font-bold Número telefónico
+          p= client.phone
+          if child
+            p.pt-5.font-bold Información del niño registrado
+            p= child.firstName + " " + child.lastName + ", de " + child.ageYears + " años"
+            p.font-bold Costo para el niño
+            p= "$ " + client.cost
+          else
+            button.mt-4.agregab: a(href="http://localhost:3000/admin/enroll-child/" + client.id) Inscribir a niño
         div
-          p= "Información adicional"
-          p= "Donde escuchó de la guardería"
+          p.font-bold Sector donde vive
+          p= client.sector
+          p.font-bold Donde escuchó de la guardería
+          p= client.meansAware

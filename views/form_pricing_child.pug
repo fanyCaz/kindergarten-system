@@ -5,16 +5,29 @@ block content
   div.grid.grid-cols-5
     include side_menu
     div.col-span-4
-      div.grid.grid-cols-2.m-10
-        p.m-3.text-3xl.text-green-400= "Cotización"
-      div.grid.grid-cols-2.justify-items-center.text-lg
-        div
-          p= "Descuento"
-          input.my-2.border-2.border-black.rounded-md
-        div
-          p.text-xl= "SERVICIOS A OBTENER"
-          p= "Servicio Maternal"
-          p= "5 días a la semana"
-          p= "4 horas por día"
-      div.grid.justify-items-center.m-10.text-lg
-        button.mt-2.py-2.px-12.rounded-full.bg-green-500.text-white: a(href="http://localhost:3000/admin/ninos", class="no-underline text-white") Inscribir
+      div.grid.m-10
+        p.m-3.text-3xl.text-green-400= "Cotización de " + child.firstName + " " +  child.lastName
+      form(action="/admin/add-child-cotization" method="POST")
+        div.grid.grid-cols-2.justify-items-center.text-lg
+          div
+            p#static_cost.hidden= (serviceChild.dailyHours * 15 * serviceChild.days) + service.cost
+            p.font-bold Costo
+            p#final_cost= "$ " + ((serviceChild.dailyHours * 15 * serviceChild.days) + service.cost)
+            p Descuento
+            input.my-2.border-2.border-black.rounded-md#discount
+            span %
+            input#finalCost.hidden(name="finalCost")
+            input.hidden(name='childId',value=child.id)
+          div
+            p.text-xl SERVICIOS A OBTENER
+            p= service.name
+            p.font-bold Costo de servicio
+            p= "$ " + service.cost
+            p.font-bold Días a la semana
+            p= serviceChild.dailyHours + " horas al día por " + serviceChild.days + " días"
+            p.font-bold Costo por hora
+            p $15
+        div.grid.justify-items-center.m-10.text-lg
+          input.mt-2.py-2.px-12.rounded-full.bg-green-500.text-white.h-12(type='submit' value='Inscribir')
+
+    script(src='/javascripts/pricing.js')

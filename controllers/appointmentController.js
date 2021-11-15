@@ -1,19 +1,19 @@
 const Sequelize = require('sequelize');
 const Cita = require('../models').Cita;
+const Cliente = require('../models').Cliente;
+const Nino = require('../models').Nino;
 
 exports.showCalendar = async(req,res,next) => {
   if(!req.isAuthenticated()) {
    return res.redirect("/admin/login");
   }
   appointments = await getAppointments();
-  console.log(appointments)
   res.render('schedule',
     { appointments: appointments });
 }
 
 exports.addAppointment = async(req,res,next) => {
   // Req -> Request
-  console.log(req.body);
   let appointmentData = req.body;
   await Cita.create({
     day: appointmentData.day,
@@ -30,6 +30,39 @@ exports.addAppointment = async(req,res,next) => {
   });
   res.redirect('/admin/schedule/');
 };
+
+exports.showClient = async(req,res,next) => {
+  let appointmentId = req.params.id_appointment;
+  let client ;
+  let appointment ;
+  let child ;
+  appointment = await Cita.findOne({
+    where: { id: appointmentId },
+    attributes: ['beginHour', 'endHour', 'day', 'ClienteId']
+  }).catch(function(error){
+    console.log("Error al traer cita");
+    console.log(error);
+  });
+  client = await Cliente.findOne({
+    where: { id: appointment.ClienteId },
+    attributes: ['id','firstName','lastName','sector','phone','meansAware','cost']
+  }).catch(function(error) {
+    console.log("Error")
+    console.log(error)
+  });
+  child = await Nino.findOne({
+    where: { ClienteId: client.id },
+    attributes: ['firstName','lastName','ageYears']
+  }).catch(function(error){
+    console.log("Error en nino");
+    console.log(error);
+  });
+  res.render('info_appointment',
+              { client: client,
+                appointment: appointment,
+                child: child
+              });
+}
 
 exports.getPublicAppointments = async(req,res,next) => {
   let appointments = await getAvailableAppointments();
