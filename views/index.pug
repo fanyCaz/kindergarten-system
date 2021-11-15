@@ -1,5 +1,14 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  include partials/client_header
+  div.grid.grid-cols-2.place-content-center.bg-pink-200.text-green-400.text-center.h-screen.justify-items-center
+    div.grid.place-content-evenly.gap-5
+      p.mb-2.text-4xl.little-world-font.text-blue-400 My Little World
+      button.little-world-background-color.agregab: a(href="http://localhost:3000/calendar") HAZ UNA CITA
+      div.flex
+        img.h-20(src='assets/books.png')
+        img.h-20(src='assets/pencil.png')
+        img.h-20(src='assets/eraser.png')
+    div.grid.grid-cols-1.text-2xl.mr-3
+      img.h-96.rounded-lg(src='assets/stock_3.png')

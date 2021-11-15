@@ -157,4 +157,9 @@ button.agregab a{
 
 .little-world-font{
   font-family: Gilligan;
+  color: #5FC6C3;
+}
+
+.little-world-background-color{
+  background-color: #5FC6C3;
 }
