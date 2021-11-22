@@ -4,6 +4,10 @@ const server = request.agent('http://localhost:3000');
 const app = require('../app');
 
 
+//const app = require('../server') // Link to your server file
+const supertest = require('supertest')
+const req_super = supertest(app)
+
 describe("Testear la ruta principal", () => {
   test("Debe de responder al GET exitosamente", () => {
     return request(app)
@@ -24,14 +28,30 @@ describe("Testear autentificacion", () => {
   });
 });
 
+describe('get nino', function() {
+    it('login', loginUser());
+    it('returns view of unique child', function(done){
+    server
+        .get('/admin/info-nino/1')
+        .expect(200)
+        .then(response => {
+          expect(response.statusCode).toBe(200);
+          expect(response.text).toContain('Volver a niños');
+        });
+    });
+});
 
+
+
+
+
+/*
 describe('GET /nino', function(){
     it('login', loginUser());
     it('uri that requires user to be logged in', function(done){
     server
-        .get('/info-nino/1')                       
-        .expect('Content-Type', /json/)
-	.expect(200)
+        .get('admin/info-nino/1')
+	    .expect(200)
         .end(function(err, res){
             if (err) return done(err);
             console.log(res.body);
@@ -44,20 +64,18 @@ describe('POST /add-child', function(){
     it('login', loginUser());
     it('uri that requires user to be logged in', function(done){
     server
-        .post('/add-child')     
-	.send({'firstName':"Lalo"})                  
+        .post('admin/add-child')
+	    .send({'firstName':"Lalo"})
         .set('Accept', 'application/json')
-      	.expect('Content-Type', /json/)
-	.expect(200)
         .end(function(err, res){
             if (err) return done(err);
-            console.log(res.body);
+            console.log(res);
             done()
         });
     });
 });
 
-
+*/
 
 
 
