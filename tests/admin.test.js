@@ -3,6 +3,9 @@ const request = require("supertest");
 const server = request.agent('http://localhost:3000');
 const app = require('../app');
 
+jest.setTimeout(40000);
+
+
 
 //const app = require('../server') // Link to your server file
 const supertest = require('supertest')
@@ -36,12 +39,33 @@ describe('get nino', function() {
         .expect(200)
         .then(response => {
           expect(response.statusCode).toBe(200);
-          expect(response.text).toContain('Volver a niños');
         });
     });
 });
 
+describe('get servicio', function() {
+    it('login', loginUser());
+    it('returns view of unique child', function(done){
+    server
+        .get('/admin/modificar-serv/1')
+        .expect(200)
+        .then(response => {
+          expect(response.statusCode).toBe(200);
+        });
+    });
+});
 
+describe('get appointment', function() {
+    it('login', loginUser());
+    it('returns view of unique child', function(done){
+    server
+        .get('/admin/schedule/1/client')
+        .expect(200)
+        .then(response => {
+          expect(response.statusCode).toBe(200);
+        });
+    });
+});
 
 
 
